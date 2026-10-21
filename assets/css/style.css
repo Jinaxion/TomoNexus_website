@@ -277,3 +277,9 @@ b,strong{color:#fff}
 .hist-hero .ver.ver-off{font-size:clamp(28px,4vw,40px)}
 .timeline.empty{padding-left:0}.timeline.empty::before{display:none}
 .chips[hidden]{display:none}
+
+/* リリース記念価格 */
+.req-cta .price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
+.req-cta .launch-row{flex-basis:100%}
+.req-cta .launch{display:inline-block;font-size:13px;font-weight:900;letter-spacing:.04em;color:#2a1d6b;background:#fff;border-radius:999px;padding:3px 12px;margin-bottom:4px;box-shadow:0 0 0 3px rgba(255,255,255,.25)}
+.req-cta .price small{flex-basis:100%;font-size:12.5px;font-weight:500;opacity:.85}

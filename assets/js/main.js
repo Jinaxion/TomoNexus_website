@@ -97,3 +97,19 @@ document.querySelectorAll(".pan").forEach((pan) => {
   track.addEventListener("pointercancel", end);
   update();
 });
+
+// 最新版の表示（トップのヒーロー下など、[data-latest-pill] がある所）
+(() => {
+  const pills = document.querySelectorAll("[data-latest-pill]");
+  if (!pills.length) return;
+  fetch("https://jinaxion.github.io/TomoNexus-update/update.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : Promise.reject()))
+    .then((u) => {
+      if (!/^\d+\.\d+\.\d+$/.test(u.latest || "")) return;
+      pills.forEach((p) => {
+        p.querySelector("b").textContent = "v" + u.latest;
+        p.hidden = false;
+      });
+    })
+    .catch(() => {});
+})();

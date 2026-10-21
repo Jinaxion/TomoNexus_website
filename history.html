@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>更新履歴 — TomoNexus</title>
+<meta name="description" content="TomoNexus の更新履歴（アップデート内容）。">
+<meta name="theme-color" content="#060918">
+<link rel="icon" type="image/png" href="assets/img/icon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Sora:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/img/icon.png" alt=""><span><span class="t">Tomo</span><span class="n">Nexus</span></span></a>
+    <nav class="nav" aria-label="メインメニュー">
+      <a href="./#features">できること</a>
+      <a href="./#movie">動画</a>
+      <a href="./#requirements">必要なもの・料金</a>
+      <a href="shikumi.html">しくみ</a>
+      <a href="history.html" aria-current="page">更新履歴</a>
+      <a href="./#faq">よくある質問</a>
+    </nav>
+    <a class="btn btn-primary" data-booth href="./#download"><span data-booth-label>体験版を試す</span></a>
+    <button class="menu-btn" aria-label="メニュー" aria-expanded="false">☰</button>
+  </div>
+</header>
+<main class="hist">
+
+<p class="eyebrow">Release notes</p>
+<h1 style="font-weight:900;font-size:clamp(28px,4.4vw,40px);line-height:1.35;margin-top:8px">更新履歴</h1>
+<p style="color:var(--soft);margin-top:8px">TomoNexus のアップデート内容です。アプリは起動時に新しい版を確認し、あればお知らせします。</p>
+
+<section class="hist-hero" aria-label="最新版">
+  <div>
+    <p class="lbl">LATEST</p>
+    <p class="ver" id="latestVer">v…</p>
+    <p class="sub"><span id="latestDate"></span><span id="minSup"></span></p>
+    <p class="note" id="latestNote"></p>
+  </div>
+  <a class="btn btn-primary" data-booth href="./#download"><span>BOOTHで入手</span></a>
+</section>
+
+<div class="chips" role="group" aria-label="種類で絞り込む">
+  <button class="chip" type="button" data-filter="all" aria-pressed="true">すべて</button>
+  <button class="chip" type="button" data-filter="new" aria-pressed="false">新機能</button>
+  <button class="chip" type="button" data-filter="improve" aria-pressed="false">改善</button>
+  <button class="chip" type="button" data-filter="fix" aria-pressed="false">修正</button>
+  <button class="chip" type="button" data-filter="notice" aria-pressed="false">お知らせ</button>
+</div>
+
+<ol class="timeline" id="timeline" aria-live="polite">
+  <li class="skel" aria-hidden="true"></li>
+  <li class="skel" aria-hidden="true"></li>
+</ol>
+
+<p class="note" style="margin-top:28px">製品版をお持ちの方は、BOOTHの購入履歴から新しい版のZIPをダウンロードできます。学習記録・メモはそのまま引き継がれます。</p>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-links"><a href="./">トップ</a><a href="shikumi.html">しくみ</a><a href="https://jinaxion.booth.pm/items/9001516" target="_blank" rel="noopener">BOOTH</a><a href="history.html">更新履歴</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a></div>
+    <p>© <span data-year>2026</span> TomoNexus</p>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/history.js"></script>
+</body>
+</html>

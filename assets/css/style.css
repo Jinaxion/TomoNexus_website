@@ -235,3 +235,45 @@ b,strong{color:#fff}
 .legal .toc ol{margin:0;columns:2;column-gap:28px;display:block}
 .legal .toc li{font-size:14.5px;break-inside:avoid}
 @media (max-width:600px){.legal .toc ol{columns:1}}
+
+/* ---------- 更新履歴 ---------- */
+.hist{max-width:880px;margin:0 auto;padding:56px 20px 88px}
+.hist-hero{position:relative;overflow:hidden;border-radius:28px;border:1.5px solid var(--line);background:var(--panel);padding:32px 34px;display:grid;grid-template-columns:1fr auto;gap:18px 28px;align-items:center;margin:28px 0 40px}
+.hist-hero::before{content:"";position:absolute;inset:-40% -10% auto auto;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(122,92,255,.28),transparent);pointer-events:none}
+.hist-hero > *{position:relative}
+.hist-hero .lbl{font-family:var(--en);font-weight:700;font-size:13px;letter-spacing:.2em;color:var(--violet)}
+.hist-hero .ver{font-family:var(--en);font-weight:800;font-size:clamp(48px,8vw,76px);line-height:1;background:linear-gradient(100deg,#5fe6ff,#a98bff 55%,#ffa24d);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hist-hero .sub{color:var(--soft);font-size:15px;display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:8px}
+.hist-hero .note{color:#fff;font-weight:700;margin-top:10px}
+@media (max-width:640px){.hist-hero{grid-template-columns:1fr;padding:26px 22px}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.chip{font:inherit;font-weight:700;font-size:14px;color:var(--soft);background:rgba(255,255,255,.04);border:1.5px solid var(--line);border-radius:999px;padding:7px 16px;min-height:38px;cursor:pointer}
+.chip[aria-pressed="true"]{color:#fff;border-color:transparent;background:var(--grad)}
+.timeline{list-style:none;margin:0;padding:0 0 0 30px;position:relative;display:flex;flex-direction:column;gap:22px}
+.timeline::before{content:"";position:absolute;left:8px;top:10px;bottom:10px;width:2px;border-radius:2px;background:linear-gradient(#5fe6ff,#a98bff 50%,#ffa24d)}
+.rel{position:relative}
+.rel::before{content:"";position:absolute;left:-30px;top:24px;width:18px;height:18px;border-radius:50%;background:var(--bg-deep);border:3px solid var(--violet);box-sizing:border-box}
+.rel.latest::before{border-color:var(--cyan);box-shadow:0 0 0 6px rgba(95,230,255,.15),0 0 18px rgba(95,230,255,.6)}
+.rel-card{background:rgba(255,255,255,.04);border:1.5px solid var(--line);border-radius:22px;padding:22px 24px;display:flex;flex-direction:column;gap:10px}
+.rel.latest .rel-card{border-color:rgba(95,230,255,.5);background:rgba(95,230,255,.05)}
+.rel-top{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px}
+.rel-ver{font-family:var(--en);font-weight:800;font-size:28px;line-height:1.1}
+.rel-date{color:var(--mute);font-size:14px;font-family:var(--en)}
+.badge{font-size:12px;font-weight:900;padding:3px 10px;border-radius:999px;background:var(--cyan);color:#06202a}
+.rel-title{font-weight:900;font-size:18px}
+.rel-sum{color:var(--soft);font-size:15px}
+.changes{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.changes li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;font-size:15.5px;color:#dfe4f4;line-height:1.65}
+.tagc{font-size:12px;font-weight:900;padding:2px 10px;border-radius:999px;border:1.5px solid currentColor;white-space:nowrap;min-width:64px;text-align:center}
+.tagc.new{color:var(--cyan)} .tagc.improve{color:var(--violet)} .tagc.fix{color:var(--orange)} .tagc.notice{color:#ffd76a}
+.hist-msg{color:var(--soft);background:rgba(255,255,255,.04);border:1.5px dashed var(--line);border-radius:18px;padding:22px;text-align:center}
+.skel{height:150px;border-radius:22px;background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.08),rgba(255,255,255,.04));background-size:200% 100%;animation:sk 1.4s infinite}
+@keyframes sk{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.skel{animation:none}}
+.ver-pill{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--soft);font-size:13.5px;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:4px 12px;margin-left:6px}
+.ver-pill b{font-family:var(--en);color:var(--cyan)}
+.ver-pill:hover{color:#fff;border-color:var(--cyan)}
+
+.hist-hero .ver.ver-off{font-size:clamp(28px,4vw,40px)}
+.timeline.empty{padding-left:0}.timeline.empty::before{display:none}
+.chips[hidden]{display:none}

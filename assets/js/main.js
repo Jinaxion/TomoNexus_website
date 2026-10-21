@@ -61,3 +61,39 @@ if ("IntersectionObserver" in window) {
 }
 
 document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
+
+// 2画面モード：横スライド（ボタン・ドラッグ・スワイプ）
+document.querySelectorAll(".pan").forEach((pan) => {
+  const track = pan.querySelector(".pan-track");
+  const bar = pan.querySelector(".pan-bar span");
+  const btns = pan.querySelectorAll("[data-pan]");
+  const max = () => track.scrollWidth - track.clientWidth;
+  const update = () => {
+    const m = max();
+    const ratio = m > 0 ? track.scrollLeft / m : 0;
+    const w = Math.max(12, (track.clientWidth / track.scrollWidth) * 100);
+    bar.style.width = w + "%";
+    bar.style.transform = `translateX(${(ratio * (100 - w) * 100) / w}%)`;
+    btns.forEach((b) => b.setAttribute("aria-pressed", String((ratio >= 0.5 ? 1 : 0) === Number(b.dataset.pan))));
+  };
+  btns.forEach((b) => b.addEventListener("click", () => track.scrollTo({ left: Number(b.dataset.pan) ? max() : 0 })));
+  track.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  track.querySelector("img").addEventListener("load", update);
+  track.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") { track.scrollBy({ left: track.clientWidth * 0.6 }); e.preventDefault(); }
+    if (e.key === "ArrowLeft") { track.scrollBy({ left: -track.clientWidth * 0.6 }); e.preventDefault(); }
+  });
+  // マウスでドラッグ
+  let down = false, sx = 0, sl = 0;
+  track.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse") return;
+    down = true; sx = e.clientX; sl = track.scrollLeft;
+    track.classList.add("dragging"); track.setPointerCapture(e.pointerId);
+  });
+  track.addEventListener("pointermove", (e) => { if (down) track.scrollLeft = sl - (e.clientX - sx); });
+  const end = () => { down = false; track.classList.remove("dragging"); };
+  track.addEventListener("pointerup", end);
+  track.addEventListener("pointercancel", end);
+  update();
+});

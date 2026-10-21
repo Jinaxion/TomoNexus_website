@@ -147,9 +147,19 @@
       <div class="card reveal"><span class="ico">🧑‍🤝‍🧑</span><h3>キャラは3人＋お好きなVRM</h3><p>同梱のTomo・Lily・Takaから選べるほか、お好きなVRMも読み込めます。</p></div>
       <div class="card reveal"><span class="ico">🖥️</span><h3>2画面向け</h3><p>キャラだけ全画面、メモやコーチは別ディスプレイ、という使い方も。</p></div>
     </div>
-    <figure class="reveal" style="margin:0">
-      <div class="shot"><img src="assets/img/dual.webp" alt="2画面モード：左にキャラ、右にコーチ欄" loading="lazy" width="2400" height="675"></div>
-      <figcaption class="caption">2画面モード ― 左のディスプレイにキャラ、右にコーチ（添削・より自然な言い方・新出表現）</figcaption>
+    <figure class="pan reveal" style="margin:0">
+      <div class="pan-head">
+        <span class="pan-title">2画面モード</span>
+        <div class="pan-tabs" role="group" aria-label="表示する画面">
+          <button type="button" data-pan="0" aria-pressed="true">左：キャラ</button>
+          <button type="button" data-pan="1" aria-pressed="false">右：コーチ</button>
+        </div>
+      </div>
+      <div class="pan-track" tabindex="0" aria-label="2画面モードのスクリーンショット（左右にスクロールできます）">
+        <img src="assets/img/dual.webp" alt="2画面モード：左のディスプレイにキャラ、右のディスプレイにコーチ欄" loading="lazy" width="3840" height="1080" draggable="false">
+      </div>
+      <div class="pan-bar" aria-hidden="true"><span></span></div>
+      <figcaption class="caption">← スワイプ・ドラッグで左右に動かせます → ／ 左のディスプレイにキャラ全画面、右にコーチ（添削・より自然な言い方・新出表現）</figcaption>
     </figure>
   </div>
 </section>
@@ -325,7 +335,7 @@
   <div class="wrap">
     <div class="foot-links">
       <a href="./">トップ</a><a href="shikumi.html">しくみ</a><a href="https://jinaxion.booth.pm/items/9001516" target="_blank" rel="noopener">BOOTH</a><a href="#requirements">必要なもの</a><a href="#faq">よくある質問</a>
-    </div>
+    <a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a></div>
     <p>ご利用には、各サービス（Anthropic / Microsoft Azure / 任意で Groq）とのご自身の契約が必要です。外部サービスの仕様・料金変更により、一部機能が使えなくなる場合があります。読み込むVRMは、ご自身が利用する権利を持つものをお使いください。本アプリはAIと音声合成を使用しています。キャラクタの声は合成音声です。</p>
     <p>TomoNexus は個人開発のアプリで、各サービスの公式製品ではありません。</p>
     <p>© <span data-year>2026</span> TomoNexus</p>

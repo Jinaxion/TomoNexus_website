@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プライバシーポリシー — TomoNexus</title>
+<meta name="description" content="TomoNexus のプライバシーポリシー。会話・メモ・音声・APIキーの取り扱い。">
+<meta name="theme-color" content="#060918">
+<link rel="icon" type="image/png" href="assets/img/icon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Sora:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/img/icon.png" alt=""><span><span class="t">Tomo</span><span class="n">Nexus</span></span></a>
+    <nav class="nav" aria-label="メインメニュー">
+      <a href="./#features">できること</a>
+      <a href="./#movie">動画</a>
+      <a href="./#requirements">必要なもの・料金</a>
+      <a href="shikumi.html">しくみ</a>
+      <a href="./#faq">よくある質問</a>
+    </nav>
+    <a class="btn btn-primary" data-booth href="./#download"><span data-booth-label>体験版を試す</span></a>
+    <button class="menu-btn" aria-label="メニュー" aria-expanded="false">☰</button>
+  </div>
+</header>
+<main class="legal">
+
+<h1>プライバシーポリシー</h1>
+<p class="meta">制定日：2026年10月21日</p>
+<p class="intro">TomoNexus の作者（以下「作者」）は、アプリケーション「TomoNexus」（以下「本ソフトウェア」）および公式サイト（以下「本サイト」）における情報の取り扱いを、以下のとおり定めます。</p>
+
+<div class="box"><p><b>ひとことで言うと：</b>作者は、あなたの会話・メモ・音声・APIキーを受け取りません。メモと記憶はあなたの PC に保存され、外に出るのは、会話のために利用者自身が契約した AI・音声サービス（Anthropic・Azure・任意で Groq）への通信だけです。データの流れは <a href="shikumi.html">しくみ</a> のページで図解しています。</p></div>
+
+<nav class="toc" aria-label="目次"><ol>
+<li><a href="#p1">作者が取得する情報</a></li><li><a href="#p2">あなたの PC に保存される情報</a></li><li><a href="#p3">外部サービスへの送信</a></li><li><a href="#p4">AIの学習に使われるか</a></li><li><a href="#p5">APIキーとログ</a></li><li><a href="#p6">購入時の情報</a></li><li><a href="#p7">本サイトについて</a></li><li><a href="#p8">お問い合わせで受け取る情報</a></li><li><a href="#p9">ご注意いただきたいこと</a></li><li><a href="#p10">改定</a></li><li><a href="#p11">お問い合わせ</a></li>
+</ol></nav>
+
+<h2 id="p1">1. 作者が取得する情報</h2>
+<p>本ソフトウェアには、作者のサーバーへ会話・メモ・音声・学習記録・APIキーを送る仕組みはありません。作者がこれらの情報を取得・保存することはありません。</p>
+
+<h2 id="p2">2. あなたの PC に保存される情報</h2>
+<p>次の情報は、利用者の PC（利用者が指定したフォルダ）に保存されます。保存先にクラウド同期フォルダを指定した場合は、そのサービスの取り扱いに従います。</p>
+<ul>
+<li>メモと「記憶」（ふつうの .md ファイル。Obsidian の Vault、またはアプリ内の保存先）</li>
+<li>学習記録・単語帳・好感度・XP・連続日数</li>
+<li>VRM と各種設定</li>
+<li>APIキー（Windows の資格情報マネージャー）</li>
+</ul>
+<p>会話の音声は保存しません（聞き取りのために送信するだけです）。アンインストール時にデータも消す場合は、アプリのフォルダに加えて <code>%APPDATA%\Tomo</code> を削除してください。</p>
+
+<h2 id="p3">3. 外部サービスへの送信</h2>
+<p>本ソフトウェアは、利用者が設定した次のサービスに、機能の提供に必要な情報を送信します。送信先での取り扱いは各社の規約・ポリシーに従います。</p>
+<div class="scroll"><table class="tbl">
+<thead><tr><th>送信先</th><th>使いみち</th><th>送る情報</th><th>各社の定め</th></tr></thead>
+<tbody>
+<tr><th>Anthropic（Claude）</th><td>会話の頭脳、要点のまとめ、メモの提案、Web検索</td><td>会話の文章、メモにまとめる内容、記憶の一部（会話の文脈として）</td><td><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Privacy Policy</a></td></tr>
+<tr><th>Microsoft Azure Speech</th><td>話した言葉の文字起こし（聞き取り）、キャラの声（読み上げ）</td><td>話した音声、読み上げる文章</td><td><a href="https://learn.microsoft.com/azure/foundry/responsible-ai/speech-service/speech-to-text/data-privacy-security" target="_blank" rel="noopener">Speech to text のデータとプライバシー</a></td></tr>
+<tr><th>Groq（任意）</th><td>聞き取りの予備（Azure の無料枠を超えた月など）</td><td>話した音声</td><td><a href="https://console.groq.com/docs/your-data" target="_blank" rel="noopener">Your Data in GroqCloud</a></td></tr>
+</tbody></table></div>
+<p>各社の取り扱いの概要（2026年10月21日時点で作者が各社の公開情報から確認したもの。最新の内容は各社の定めをご確認ください）：</p>
+<ul>
+<li><b>Azure Speech（聞き取り）：</b>リアルタイムの文字起こしでは、音声はサーバーのメモリ上で処理され、Microsoft はデータを保存しないとされています。</li>
+<li><b>Groq：</b>既定では推論リクエストのデータを保持しないとされています。ただし、障害対応や不正利用の調査のため、最大30日間ログが保持される場合があります。</li>
+</ul>
+<p>読み上げをオフにしてキーボードで会話する設定では、外部に送信されるのは Anthropic への文章だけになります。</p>
+
+<h2 id="p4">4. AIの学習に使われるか</h2>
+<ul>
+<li><b>① Anthropic の APIキーで使う場合：</b>Anthropic の商用規約が適用され、送った内容が AI の学習に使われることはありません（標準の保持期間は30日）。</li>
+<li><b>② Claude Pro / Max など（個人向けプラン）で使う場合：</b>Anthropic の一般向け規約が適用されます。claude.ai の設定で「モデル改善に協力」がオンだと、会話が学習に使われ5年間保持されます。オフの場合の保持期間は30日です。気になる方は <a href="https://claude.ai/settings/data-privacy-controls" target="_blank" rel="noopener">プライバシー設定</a> でオフにしてからご利用ください。</li>
+<li><b>② Claude Team で使う場合：</b>商用規約が適用され、学習に使われません。</li>
+</ul>
+<p>本ソフトウェアが Claude のログイン情報（パスワード・トークン）を読んだり預かったりすることはありません。</p>
+
+<h2 id="p5">5. APIキーとログ</h2>
+<ul>
+<li>APIキーは Windows の資格情報マネージャーに保存し、設定ファイルに平文で書き込みません。</li>
+<li>本ソフトウェアのログには、会話・メモ本文・APIキーを記録しません。</li>
+</ul>
+
+<h2 id="p6">6. 購入時の情報</h2>
+<p>製品版の購入は BOOTH（ピクシブ株式会社）を通じて行われ、決済情報・注文情報の取り扱いは BOOTH および pixiv の規約・プライバシーポリシーに従います。作者は、BOOTH から提供される範囲の注文情報を、ライセンスの発行・お問い合わせ対応のためにのみ利用します。</p>
+
+<h2 id="p7">7. 本サイトについて</h2>
+<ul>
+<li>本サイトは GitHub Pages（GitHub, Inc.）で公開しています。アクセスの際、GitHub がアクセスログ（IPアドレス等）を記録することがあります。</li>
+<li>本サイトは、文字の表示に Google Fonts を、動画の表示に YouTube の埋め込みプレーヤーを利用しています。これらの読み込みや再生にともない、Google にアクセス情報が送信され、Cookie が使われることがあります。</li>
+<li>作者は、本サイトで独自のアクセス解析や Cookie を使用していません。</li>
+</ul>
+
+<h2 id="p8">8. お問い合わせで受け取る情報</h2>
+<p>お問い合わせの際にいただいた情報（お名前・連絡先・内容など）は、回答と不具合の調査のためにのみ利用し、法令に基づく場合を除き第三者に提供しません。</p>
+
+<h2 id="p9">9. ご注意いただきたいこと</h2>
+<p>会話の内容は AI サービスに送信されます。AI に個人情報やパスワード等を話したり入力したりしないでください。</p>
+
+<h2 id="p10">10. 改定</h2>
+<p>本ポリシーは、必要に応じて改定することがあります。改定後の内容は本ページに掲載した時点から効力を生じます。</p>
+
+<h2 id="p11">11. お問い合わせ</h2>
+<p>本ポリシーに関するお問い合わせは、BOOTH のショップ（<a href="https://jinaxion.booth.pm/" target="_blank" rel="noopener">jinaxion.booth.pm</a>）からご連絡ください。</p>
+<p style="margin-top:28px;color:var(--mute)">以上</p>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-links"><a href="./">トップ</a><a href="shikumi.html">しくみ</a><a href="https://jinaxion.booth.pm/items/9001516" target="_blank" rel="noopener">BOOTH</a><a href="terms.html">利用規約</a><a href="privacy.html" aria-current="page">プライバシーポリシー</a></div>
+    <p>© <span data-year>2026</span> TomoNexus</p>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

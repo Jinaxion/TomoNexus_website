@@ -7,6 +7,8 @@ GitHub Pages で公開している TomoNexus の公式サイトです。ビル�
 ```
 index.html          トップ（LP）
 shikumi.html        しくみ（データの流れ・費用・学習利用）
+terms.html          利用規約
+privacy.html        プライバシーポリシー
 assets/css/style.css
 assets/js/main.js   ← BOOTHのURLはここの SITE.boothUrl に1か所だけ書く
 assets/img/         画像（WebP）・OGP・アイコン

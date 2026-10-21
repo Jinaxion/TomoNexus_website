@@ -304,3 +304,6 @@ b,strong{color:#fff}
 @media (prefers-reduced-motion:reduce){.spot-ring{animation:none}}
 .nb{display:inline-block}
 @media (max-width:860px){.spot-shot{max-width:300px}}
+.spot-name{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:-4px 0 -2px}
+.spot-name b{font-weight:900;font-size:16px;color:#06202a;background:var(--cyan);border-radius:999px;padding:5px 16px;box-shadow:0 0 22px rgba(95,230,255,.45)}
+.spot-name span{color:var(--soft);font-size:14px;font-weight:700}

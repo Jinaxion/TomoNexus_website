@@ -18,19 +18,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Sora:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
 <style>
-.doc{--paper:#f3f4f6;--card:#ffffff;--ink:#151b27;--soft:#4a5466;--faint:#6b7587;--rule:#d9dde5;--rule2:#e8ebf0;--local:#0d7a69;--local-bg:#e1f2ee;--away:#a85a00;--away-bg:#fdeedd;--paid:#5a46c8;--paid-bg:#ebe7fc;--talk:#0a86a8;--memo:#c25f00;--shadow:0 1px 2px rgba(21,27,39,.05),0 10px 30px rgba(21,27,39,.06);color-scheme:light;background:var(--paper);color:var(--ink);font-family:"Noto Sans JP",system-ui,"Segoe UI",sans-serif;font-size:15px;line-height:1.75}
-@media (prefers-color-scheme:dark){.doc{--paper:#0d1118;--card:#161c26;--ink:#eaedf2;--soft:#b0b8c6;--faint:#8a94a6;--rule:#2b3341;--rule2:#222a36;--local:#5fd6c0;--local-bg:#0f2f2a;--away:#ffb35c;--away-bg:#3a2711;--paid:#b5a8ff;--paid-bg:#272149;--talk:#5fe6ff;--memo:#ffa24d;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 30px rgba(0,0,0,.35);color-scheme:dark}}
+.doc{--paper:#03050d;--card:#0c1330;--ink:#eef2ff;--soft:#c6cde4;--faint:#8f98b6;--rule:#232b47;--rule2:#1a2140;--local:#5fd6c0;--local-bg:#0b2a2a;--away:#ffb35c;--away-bg:#2e2012;--paid:#b5a8ff;--paid-bg:#1f1a45;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 30px rgba(0,0,0,.35);color-scheme:dark;background:var(--paper);color:var(--ink);font-family:"Noto Sans JP",system-ui,"Segoe UI",sans-serif;font-size:15px;line-height:1.75}
 .doc a{color:var(--local)} .doc a:hover{color:var(--ink)}
 .doc b,.doc strong{color:inherit}
 .doc h1,.doc h2,.doc h3,.doc p{margin:0}
-.flow{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.flow li{display:grid;grid-template-columns:28px 1fr;gap:2px 12px;align-items:start;background:var(--card);border:1px solid var(--rule);border-left-width:4px;border-radius:12px;padding:10px 14px;transition:opacity .25s}
-.flow li.local{border-left-color:var(--local)} .flow li.away{border-left-color:var(--away)} .flow li.paid{border-left-color:var(--paid)}
-.flow .num{grid-row:span 2;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:18px;color:var(--faint)}
-.flow .txt{font-size:14.5px;line-height:1.55}
-.flow .where{font-size:12.5px;font-weight:700}
-.flow li.local .where{color:var(--local)} .flow li.away .where{color:var(--away)} .flow li.paid .where{color:var(--paid)}
-.voice-off .voice{opacity:.25}
 .back{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;text-decoration:none}
 </style>
 </head>
@@ -203,9 +194,7 @@
     </div>
   </section>
 
-  <section data-screen-label="03 会話の流れ" style="display:flex;flex-direction:column;gap:14px"><h2 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:22px;line-height:1.4">1回の会話で起きること</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px"><div class="flow-col"><h3 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:20px;color:var(--talk)">Talk（英会話）</h3><ol class="flow"><li class="local"><span class="num">1</span><span class="txt">英語で話す</span><span class="where">PC内</span></li><li class="away voice"><span class="num">2</span><span class="txt">話した音声を文字にする</span><span class="where">Azure（超過時は Groq）</span></li><li class="paid"><span class="num">3</span><span class="txt">文章を Claude へ送り、返事・添削・表情の指定を受け取る</span><span class="where">Anthropic</span></li><li class="away voice"><span class="num">4</span><span class="txt">返事を声にする（文ごとに順次）</span><span class="where">Azure</span></li><li class="local"><span class="num">5</span><span class="txt">アバターが表情と身振りつきでしゃべる（Claude の指定＋声に合わせた自動の動き）</span><span class="where">PC内</span></li><li class="local"><span class="num">6</span><span class="txt">添削・言い換えを画面の右に表示し、学習記録を保存</span><span class="where">PC内</span></li></ol></div><div class="flow-col"><h3 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:20px;color:var(--memo)">Memo（メモづくり）</h3><ol class="flow"><li class="local"><span class="num">1</span><span class="txt">日本語で話す（アバターから話しかけてきます）</span><span class="where">PC内</span></li><li class="away voice"><span class="num">2</span><span class="txt">話した音声を文字にする</span><span class="where">Azure（超過時は Groq）</span></li><li class="paid"><span class="num">3</span><span class="txt">Claude が要点をつかみ、メモへの追記を提案</span><span class="where">Anthropic</span></li><li class="local"><span class="num">4</span><span class="txt">提案は採用待ちで表示。採用・却下はあなたが決める</span><span class="where">PC内</span></li><li class="away voice"><span class="num">5</span><span class="txt">返事を声にする（文ごとに順次。Memo では短め）</span><span class="where">Azure</span></li><li class="local"><span class="num">6</span><span class="txt">まとまったら Obsidian に保存</span><span class="where">PC内</span></li></ol></div></div></section>
-
-  <section data-screen-label="04 料金" style="display:flex;flex-direction:column;gap:14px">
+   <section data-screen-label="04 料金" style="display:flex;flex-direction:column;gap:14px">
     <div style="display:flex;align-items:baseline;gap:6px 14px;flex-wrap:wrap">
       <h2 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:22px">月々かかる費用の目安</h2>
       <span style="font-size:14px;color:var(--soft)">料金・無料枠は各社の都合で変わることがあります</span>

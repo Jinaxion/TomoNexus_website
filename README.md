@@ -20,5 +20,6 @@ Settings → Pages → Source: **Deploy from a branch** → Branch: `main` / `/ 
 
 ## 更新メモ
 
-- BOOTH公開後：`assets/js/main.js` の `boothUrl` にURLを入れると、全ページのボタンがBOOTHへ飛ぶようになります（空の間は「体験版 近日公開」表示）
+- BOOTHのURLは `assets/js/main.js` の `boothUrl`（空にすると「体験版 近日公開」表示に戻る）
+- YouTube：紹介動画 RyqpIembaJY ／ ショート ItryU8vBAto（index.html の #movie セクション）
 - 元デザイン：Claude Design の「TomoNexus BOOTH広告」「Tomo のしくみ」

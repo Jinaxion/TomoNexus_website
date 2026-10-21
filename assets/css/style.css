@@ -192,3 +192,12 @@ b,strong{color:#fff}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* ---------- YouTube ---------- */
+.movies{display:grid;grid-template-columns:minmax(0,2.6fr) minmax(0,1fr);gap:20px;align-items:start}
+.yt{margin:0;display:flex;flex-direction:column;gap:8px}
+.yt iframe{width:100%;height:auto;border:0;border-radius:18px;background:#000;box-shadow:0 0 0 1px var(--line),0 20px 60px rgba(0,0,0,.4)}
+.yt-long iframe{aspect-ratio:16/9}
+.yt-short iframe{aspect-ratio:9/16}
+.yt figcaption{color:var(--mute);font-size:14px;text-align:center}
+@media (max-width:760px){.movies{grid-template-columns:1fr}.yt-short{max-width:280px;width:100%;justify-self:center}}

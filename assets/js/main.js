@@ -1,7 +1,7 @@
 // ===== サイト設定（ここだけ書き換えればOK） =====
 const SITE = {
   // BOOTHの商品ページURL。公開したらここに貼る（空のあいだは「近日公開」表示）
-  boothUrl: "",
+  boothUrl: "https://jinaxion.booth.pm/items/9001516",
 };
 
 // BOOTHリンクの差し込み

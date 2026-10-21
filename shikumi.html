@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TomoNexus のしくみ — 話した言葉が、どこを通るか</title>
+<meta name="description" content="TomoNexus で話した言葉・音声・メモがどこを通り、どこに残るのか。月々の費用の目安と、学習に使われるかどうかもまとめています。">
+<meta name="theme-color" content="#060918">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TomoNexus のしくみ — 話した言葉が、どこを通るか">
+<meta property="og:description" content="外に出る通信は Anthropic・Azure（任意で Groq）だけ。メモと記憶はあなたのPCに。">
+<meta property="og:image" content="assets/img/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/img/icon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Sora:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.doc{--paper:#f3f4f6;--card:#ffffff;--ink:#151b27;--soft:#4a5466;--faint:#6b7587;--rule:#d9dde5;--rule2:#e8ebf0;--local:#0d7a69;--local-bg:#e1f2ee;--away:#a85a00;--away-bg:#fdeedd;--paid:#5a46c8;--paid-bg:#ebe7fc;--talk:#0a86a8;--memo:#c25f00;--shadow:0 1px 2px rgba(21,27,39,.05),0 10px 30px rgba(21,27,39,.06);color-scheme:light;background:var(--paper);color:var(--ink);font-family:"Noto Sans JP",system-ui,"Segoe UI",sans-serif;font-size:15px;line-height:1.75}
+@media (prefers-color-scheme:dark){.doc{--paper:#0d1118;--card:#161c26;--ink:#eaedf2;--soft:#b0b8c6;--faint:#8a94a6;--rule:#2b3341;--rule2:#222a36;--local:#5fd6c0;--local-bg:#0f2f2a;--away:#ffb35c;--away-bg:#3a2711;--paid:#b5a8ff;--paid-bg:#272149;--talk:#5fe6ff;--memo:#ffa24d;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 30px rgba(0,0,0,.35);color-scheme:dark}}
+.doc a{color:var(--local)} .doc a:hover{color:var(--ink)}
+.doc b,.doc strong{color:inherit}
+.doc h1,.doc h2,.doc h3,.doc p{margin:0}
+.flow{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.flow li{display:grid;grid-template-columns:28px 1fr;gap:2px 12px;align-items:start;background:var(--card);border:1px solid var(--rule);border-left-width:4px;border-radius:12px;padding:10px 14px;transition:opacity .25s}
+.flow li.local{border-left-color:var(--local)} .flow li.away{border-left-color:var(--away)} .flow li.paid{border-left-color:var(--paid)}
+.flow .num{grid-row:span 2;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:18px;color:var(--faint)}
+.flow .txt{font-size:14.5px;line-height:1.55}
+.flow .where{font-size:12.5px;font-weight:700}
+.flow li.local .where{color:var(--local)} .flow li.away .where{color:var(--away)} .flow li.paid .where{color:var(--paid)}
+.voice-off .voice{opacity:.25}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/img/icon.png" alt=""><span><span class="t">Tomo</span><span class="n">Nexus</span></span></a>
+    <nav class="nav" aria-label="メインメニュー">
+      <a href="./#features">できること</a>
+      <a href="./#requirements">必要なもの・料金</a>
+      <a href="shikumi.html" aria-current="page">しくみ</a>
+      <a href="./#faq">よくある質問</a>
+    </nav>
+    <a class="btn btn-primary" data-booth href="./#download"><span data-booth-label>体験版を試す</span></a>
+    <button class="menu-btn" aria-label="メニュー" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main class="doc" id="doc">
+<div style="max-width:1040px;margin:0 auto;padding:36px 20px 56px;display:flex;flex-direction:column;gap:44px;box-sizing:border-box">
+
+  <header data-screen-label="01 ヒーロー" style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;color:var(--faint)">TOMONEXUS / しくみ</p>
+      <h1 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:clamp(30px,5.4vw,46px);line-height:1.25;letter-spacing:.01em;text-wrap:balance">話した言葉が、どこを通るか</h1>
+      <p style="color:var(--soft);font-size:16px;max-width:60ch;text-wrap:pretty">TomoNexus は、VRMキャラと英語で話してコーチを受ける（Talk）、日本語で話しながらメモをまとめる（Memo）Windows アプリです。</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:12px">
+      <div style="background:var(--paid-bg);border:1.5px solid var(--paid);border-radius:16px;padding:18px 20px;display:flex;align-items:center;gap:16px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:56px;line-height:1;color:var(--paid);white-space:nowrap">1<span style="font-size:20px;font-weight:700;margin-left:2px;font-family:'Zen Kaku Gothic New',sans-serif">つ</span></span>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <span style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:18px;color:var(--paid)">月々かかるもの</span>
+          <span style="font-size:14px;color:var(--ink);text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere">AI（Claude）だけ。APIキー または Claude Pro など</span>
+        </div>
+      </div>
+      <div style="background:var(--away-bg);border:1.5px solid var(--away);border-radius:16px;padding:18px 20px;display:flex;align-items:center;gap:16px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:56px;line-height:1;color:var(--away);white-space:nowrap">3<span style="font-size:20px;font-weight:700;margin-left:2px;font-family:'Zen Kaku Gothic New',sans-serif">社</span></span>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <span style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:18px;color:var(--away)">PCの外に出る通信</span>
+          <span style="font-size:14px;color:var(--ink);text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere">Anthropic・Groq・Azure だけ</span>
+        </div>
+      </div>
+      <div style="background:var(--local-bg);border:1.5px solid var(--local);border-radius:16px;padding:18px 20px;display:flex;align-items:center;gap:16px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:56px;line-height:1;color:var(--local);white-space:nowrap">4<span style="font-size:20px;font-weight:700;margin-left:2px;font-family:'Zen Kaku Gothic New',sans-serif">種類</span></span>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <span style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:18px;color:var(--local)">PCの中に残るもの</span>
+          <span style="font-size:14px;color:var(--ink);text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere">メモと記憶・学習記録・キャラ・キー</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section data-screen-label="02 データの流れ" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px 20px;flex-wrap:wrap">
+      <h2 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:22px;line-height:1.4">外に出るのは、この<span style="color:var(--away)"><span id="outCount">3</span>本</span>だけ</h2>
+      <button id="voiceToggle" aria-pressed="false" style="display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--rule);border-radius:999px;padding:6px 14px 6px 6px;font:inherit;font-size:13.5px;color:var(--ink);cursor:pointer;min-height:40px">
+        <span class="track" style="width:40px;height:24px;border-radius:999px;background:var(--rule);position:relative;flex:none;transition:background .2s">
+          <span class="knob" style="position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left .2s"></span>
+        </span>
+        音声を使わない設定で見る
+      </button>
+    </div>
+
+    <div style="background:var(--card);border:1px solid var(--rule);border-radius:20px;box-shadow:var(--shadow);padding:clamp(14px,3vw,28px);display:flex;flex-direction:column">
+
+      <div style="background:var(--local-bg);border:2px solid var(--local);border-radius:16px;padding:clamp(16px,2.6vw,24px);display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:6px 16px;flex-wrap:wrap">
+          <h3 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:20px;color:var(--local)">あなたのPC（Windows）</h3>
+          <span style="font-size:14px;font-weight:700;color:var(--local)">ここにあるものは外に出ません</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:stretch">
+          <div style="flex:1 1 240px;background:var(--card);border-radius:12px;padding:12px 16px;display:flex;flex-direction:column;gap:2px">
+            <span style="font-weight:700;font-size:16px">TomoNexus アプリ</span>
+            <span style="font-size:14px;color:var(--soft)">画面のVRMキャラが表情・身振り・口の動きで反応。あなたはマイクで話し、画面で読み、メモを直す</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:8px">
+          <div style="background:var(--card);border-radius:10px;padding:10px 14px;font-size:14.5px;line-height:1.55"><b style="display:block">メモと「記憶」</b><span style="color:var(--soft);font-size:13.5px">ふつうの .md ファイル。Obsidian のVault、またはアプリ内</span></div>
+          <div style="background:var(--card);border-radius:10px;padding:10px 14px;font-size:14.5px;line-height:1.55"><b style="display:block">学習記録・単語帳</b><span style="color:var(--soft);font-size:13.5px">好感度・XP・連続日数も</span></div>
+          <div style="background:var(--card);border-radius:10px;padding:10px 14px;font-size:14.5px;line-height:1.55"><b style="display:block">VRM と設定</b><span style="color:var(--soft);font-size:13.5px">読み込むだけ</span></div>
+          <div style="background:var(--card);border-radius:10px;padding:10px 14px;font-size:14.5px;line-height:1.55"><b style="display:block">APIキー</b><span style="color:var(--soft);font-size:13.5px">Windows の資格情報マネージャー</span></div>
+          <div style="background:var(--card);border-radius:10px;padding:10px 14px;font-size:14.5px;line-height:1.55"><b style="display:block">会話の音声</b><span style="color:var(--soft);font-size:13.5px">どこにも保存しません（聞き取りに送るだけ）</span></div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 4px 0">
+        <span style="flex:1;border-top:2px dashed var(--rule)"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--faint)">↓ ここから先がインターネット</span>
+        <span style="flex:1;border-top:2px dashed var(--rule)"></span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:14px 16px">
+
+        <div style="display:flex;flex-direction:column">
+          <div style="display:flex;gap:14px;align-items:stretch;padding-left:18px;min-height:96px">
+            <div style="display:flex;flex-direction:column;align-items:center;flex:none;padding-top:6px">
+              <span style="width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:15px solid var(--paid)"></span>
+              <span style="width:8px;flex:1;background:var(--paid)"></span>
+              <span style="width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-top:15px solid var(--paid)"></span>
+            </div>
+            <div style="display:flex;flex-direction:column;justify-content:center;gap:2px;font-size:14px;line-height:1.5;padding:8px 0">
+              <span style="color:var(--paid);font-weight:700">送る：会話の文章・メモにまとめる内容</span>
+              <span style="color:var(--soft)">戻る：返事・添削・メモの提案</span>
+            </div>
+          </div>
+          <div style="flex:1;background:var(--paid-bg);border:2px solid var(--paid);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+              <span style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:19px">Anthropic（Claude）</span>
+              <span style="background:var(--paid);color:var(--card);font-size:12.5px;font-weight:700;padding:2px 10px;border-radius:999px">月々の費用</span>
+            </div>
+            <span style="font-size:14.5px;color:var(--soft)">会話の頭脳。要点のまとめ</span>
+            <span style="font-size:14px;color:var(--ink);text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere"><b>① APIキー</b>（おすすめ・従量課金）<br><b>② Claude Pro / Max / Team など</b>（追加料金なし）</span>
+          </div>
+        </div>
+
+        <div class="voice-dep" style="display:flex;flex-direction:column;opacity:1;transition:opacity .25s">
+          <div style="display:flex;gap:14px;align-items:stretch;padding-left:18px;min-height:96px">
+            <div style="display:flex;flex-direction:column;align-items:center;flex:none;padding-top:6px">
+              <span style="width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:15px solid var(--away)"></span>
+              <span style="width:8px;flex:1;background:var(--away)"></span>
+              <span style="width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-top:15px solid var(--away)"></span>
+            </div>
+            <div style="display:flex;flex-direction:column;justify-content:center;gap:2px;font-size:14px;line-height:1.5;padding:8px 0">
+              <span style="color:var(--away);font-weight:700">送る：話した音声</span>
+              <span style="color:var(--soft)">戻る：文字起こし</span>
+            </div>
+          </div>
+          <div style="flex:1;background:var(--away-bg);border:2px solid var(--away);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+              <span style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:19px">Azure Speech</span>
+              <span style="border:1.5px solid var(--away);color:var(--away);font-size:12.5px;font-weight:700;padding:1px 10px;border-radius:999px">無料枠</span>
+            </div>
+            <span style="font-size:14.5px;color:var(--soft)">話した言葉を文字にする（聞き取り）</span>
+            <span style="font-size:14px;color:var(--ink);text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere">声と同じキーで使えます。月5時間まで無料</span>
+            <div style="margin-top:6px;padding-top:8px;border-top:1px dashed var(--away);display:flex;flex-direction:column;gap:2px">
+              <span style="font-size:14px;font-weight:700;color:var(--away)">足りない月だけ → Groq に切り替え</span>
+              <span style="font-size:13.5px;color:var(--soft);text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere">任意。無料で作れるキーを入れておくと、5時間を超えたあとも聞き取りを続けられます</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="voice-dep" style="display:flex;flex-direction:column;opacity:1;transition:opacity .25s">
+          <div style="display:flex;gap:14px;align-items:stretch;padding-left:18px;min-height:96px">
+            <div style="display:flex;flex-direction:column;align-items:center;flex:none;padding-top:6px">
+              <span style="width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:15px solid var(--away)"></span>
+              <span style="width:8px;flex:1;background:var(--away)"></span>
+              <span style="width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-top:15px solid var(--away)"></span>
+            </div>
+            <div style="display:flex;flex-direction:column;justify-content:center;gap:2px;font-size:14px;line-height:1.5;padding:8px 0">
+              <span style="color:var(--away);font-weight:700">送る：読み上げる文章</span>
+              <span style="color:var(--soft)">戻る：音声</span>
+            </div>
+          </div>
+          <div style="flex:1;background:var(--away-bg);border:2px solid var(--away);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+              <span style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:19px">Azure Speech</span>
+              <span style="border:1.5px solid var(--away);color:var(--away);font-size:12.5px;font-weight:700;padding:1px 10px;border-radius:999px">無料枠</span>
+            </div>
+            <span style="font-size:14.5px;color:var(--soft)">キャラの声（日本語・英語とも）</span>
+            <span style="font-size:14px;color:var(--ink);text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere">月50万文字まで無料。キーが無くても字幕で会話できます</span>
+          </div>
+        </div>
+      </div>
+
+      <p id="footNote" style="margin-top:18px;padding-top:16px;border-top:1px solid var(--rule2);font-size:14.5px;color:var(--soft);text-wrap:pretty">メモ・記憶・学習記録・キャラ・キーはPCに保存されます（クラウドフォルダを指定するのも自由）。会話の音声はどこにも保存しません。</p>
+    </div>
+  </section>
+
+  <section data-screen-label="03 会話の流れ" style="display:flex;flex-direction:column;gap:14px"><h2 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:22px;line-height:1.4">1回の会話で起きること</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px"><div class="flow-col"><h3 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:20px;color:var(--talk)">Talk（英会話）</h3><ol class="flow"><li class="local"><span class="num">1</span><span class="txt">英語で話す</span><span class="where">PC内</span></li><li class="away voice"><span class="num">2</span><span class="txt">話した音声を文字にする</span><span class="where">Azure（超過時は Groq）</span></li><li class="paid"><span class="num">3</span><span class="txt">文章を Claude へ送り、返事・添削・表情の指定を受け取る</span><span class="where">Anthropic</span></li><li class="away voice"><span class="num">4</span><span class="txt">返事を声にする（文ごとに順次）</span><span class="where">Azure</span></li><li class="local"><span class="num">5</span><span class="txt">アバターが表情と身振りつきでしゃべる（Claude の指定＋声に合わせた自動の動き）</span><span class="where">PC内</span></li><li class="local"><span class="num">6</span><span class="txt">添削・言い換えを画面の右に表示し、学習記録を保存</span><span class="where">PC内</span></li></ol></div><div class="flow-col"><h3 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:20px;color:var(--memo)">Memo（メモづくり）</h3><ol class="flow"><li class="local"><span class="num">1</span><span class="txt">日本語で話す（アバターから話しかけてきます）</span><span class="where">PC内</span></li><li class="away voice"><span class="num">2</span><span class="txt">話した音声を文字にする</span><span class="where">Azure（超過時は Groq）</span></li><li class="paid"><span class="num">3</span><span class="txt">Claude が要点をつかみ、メモへの追記を提案</span><span class="where">Anthropic</span></li><li class="local"><span class="num">4</span><span class="txt">提案は採用待ちで表示。採用・却下はあなたが決める</span><span class="where">PC内</span></li><li class="away voice"><span class="num">5</span><span class="txt">返事を声にする（文ごとに順次。Memo では短め）</span><span class="where">Azure</span></li><li class="local"><span class="num">6</span><span class="txt">まとまったら Obsidian に保存</span><span class="where">PC内</span></li></ol></div></div></section>
+
+  <section data-screen-label="04 料金" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;gap:6px 14px;flex-wrap:wrap">
+      <h2 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:22px">月々かかる費用の目安</h2>
+      <span style="font-size:14px;color:var(--soft)">料金・無料枠は各社の都合で変わることがあります</span>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--rule);border-radius:16px;box-shadow:var(--shadow);overflow:hidden">
+      <div style="display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;padding:14px 22px;border-bottom:1px solid var(--rule2)">
+        <b style="flex:0 0 130px;font-size:15.5px">TomoNexus 本体</b>
+        <span style="flex:1 1 240px;font-size:14.5px">アプリのライセンス<span style="display:block;font-size:13.5px;color:var(--soft)">体験版は無料。.lic を読み込むと制限が外れます</span></span>
+        <b style="font-size:14.5px">買い切り</b>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;padding:16px 22px;background:var(--paid-bg);border-bottom:1px solid var(--rule2)">
+        <b style="flex:0 0 130px;font-size:15.5px">AI ① APIキー</b>
+        <span style="flex:1 1 240px;font-size:14.5px">おすすめ。キーを1つ貼るだけ<span style="display:block;font-size:13.5px;color:var(--soft)">会話は軽量モデル、まとめは高性能モデルのおすすめ設定で約200円。アプリ内で月の上限金額を決められます</span></span>
+        <b style="font-size:14.5px;color:var(--paid)">毎日15分で月200〜600円程度</b>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;padding:16px 22px;background:var(--paid-bg);border-bottom:1px solid var(--rule2)">
+        <b style="flex:0 0 130px;font-size:15.5px">AI ② Claude Pro / Max / Team など</b>
+        <span style="flex:1 1 240px;font-size:14.5px">Claude Code を使っている方向け<span style="display:block;font-size:13.5px;color:var(--soft)">ご自身で Claude Code をインストールし、ご自身のアカウントでログイン</span></span>
+        <b style="font-size:14.5px;color:var(--paid)">追加料金なし（プランの利用枠内）</b>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;padding:14px 22px;border-bottom:1px solid var(--rule2)">
+        <b style="flex:0 0 130px;font-size:15.5px">Azure Speech</b>
+        <span style="flex:1 1 240px;font-size:14.5px">聞き取り</span>
+        <span style="font-size:14.5px;color:var(--away);font-weight:700">月5時間まで無料</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;padding:14px 22px;border-bottom:1px solid var(--rule2)">
+        <b style="flex:0 0 130px;font-size:15.5px">Azure Speech</b>
+        <span style="flex:1 1 240px;font-size:14.5px">キャラの声<span style="display:block;font-size:13.5px;color:var(--soft)">毎日30分話しても1割ほど</span></span>
+        <span style="font-size:14.5px;color:var(--away);font-weight:700">月50万文字まで無料</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;padding:14px 22px;border-bottom:1px solid var(--rule2)">
+        <b style="flex:0 0 130px;font-size:15.5px">Groq<span style="display:block;font-size:13px;font-weight:500;color:var(--soft)">任意</span></b>
+        <span style="flex:1 1 240px;font-size:14.5px">聞き取りの予備<span style="display:block;font-size:13.5px;color:var(--soft)">Azure の5時間を超えた月だけ使います</span></span>
+        <span style="font-size:14.5px;color:var(--away);font-weight:700">無料枠で足りる想定</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;padding:14px 22px;border-bottom:1px solid var(--rule2)">
+        <b style="flex:0 0 130px;font-size:15.5px">Obsidian</b>
+        <span style="flex:1 1 240px;font-size:14.5px">メモの保存先<span style="display:block;font-size:13.5px;color:var(--soft)">使わずアプリ内に保存することもできます</span></span>
+        <span style="font-size:14.5px;color:var(--soft);font-weight:700">無料（個人利用）</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;padding:14px 22px">
+        <b style="flex:0 0 130px;font-size:15.5px">VRM キャラ</b>
+        <span style="flex:1 1 240px;font-size:14.5px">画面のキャラクター<span style="display:block;font-size:13.5px;color:var(--soft)">同梱の3人（Tomo・Lily・Taka）のほか、お好きなVRMも読み込めます</span></span>
+        <span style="font-size:14.5px;color:var(--soft)">—</span>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="05 出る・出ない" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:16px">
+    <div style="background:var(--card);border:1.5px solid var(--away);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px">
+      <h3 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:18px;color:var(--away)">PCから出るもの（これだけ）</h3>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:14.5px;line-height:1.6">
+        <span>会話の文章・メモにまとめる内容 → Anthropic</span>
+        <span>話した音声 → Azure（5時間を超えた月は Groq）</span>
+        <span>読み上げる文章 → Azure</span>
+        <span style="color:var(--soft)">ログに会話・メモ本文・APIキーは残しません</span>
+      </div>
+    </div>
+    <div style="background:var(--card);border:1.5px solid var(--paid);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px">
+      <h3 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:18px;color:var(--paid)">送った内容は学習に使われる？</h3>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:14.5px;line-height:1.6">
+        <span><b>① APIキー：</b>Anthropic の商用規約により、学習に使われません（標準30日保持）</span>
+        <span><b>② Claude Pro / Max など：</b>一般向け規約が適用。claude.ai の「モデル改善に協力」がオンだと学習に使われ5年間保持。気になる方はオフに</span>
+        <span><b>② Claude Team：</b>商用規約が適用され、学習に使われません</span>
+        <span style="color:var(--soft)">TomoNexus が Claude のログイン情報を読んだり預かったりすることはありません</span>
+      </div>
+    </div>
+    <div style="background:var(--card);border:1.5px solid var(--local);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px">
+      <h3 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:18px;color:var(--local)">音声を使わない選択もできます</h3>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:14.5px;line-height:1.6">
+        <span>読み上げをオフにすると、アバターは字幕と表情・口の動きで反応します</span>
+        <span>キーボードだけで会話もできます</span>
+        <span style="font-weight:700;color:var(--local)">この設定なら、外に出るのは Claude への文章だけです</span>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid var(--rule);padding-top:18px;display:flex;flex-direction:column;gap:6px;font-size:13.5px;color:var(--soft)">
+    <p><b style="color:var(--ink)">使う前に用意するもの：</b>AI（Anthropic の APIキー または Claude Pro / Max / Team などの契約） ／ Azure Speech のキー ／ マイク ／（任意）Groq のキー・Obsidian・お好きな VRM。キーの取り方はセットアップ画面が案内します（目安5〜10分）</p>
+    <p><b style="color:var(--ink)">動作環境：</b>Windows 10 / 11（Mac・スマホは非対応）。内蔵GPU（Ryzen 7 相当）で 30fps 以上で動くように作られています。</p>
+    <p style="color:var(--faint)">名前の由来：Talk と Memo、それをつなぐ Obsidian の頭文字で「Tomo」。記憶どうしが神経細胞のようにつながるイメージで「Nexus」を加えました。TomoNexus は個人開発のアプリで、各サービスの公式製品ではありません。</p>
+  </footer>
+</div>
+
+  <p style="text-align:center;padding:0 20px 56px;margin:0"><a class="back" href="./">← TomoNexus トップへ戻る</a></p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-links"><a href="./">トップ</a><a href="shikumi.html">しくみ</a><a href="./#requirements">必要なもの</a><a href="./#faq">よくある質問</a></div>
+    <p>© <span data-year>2026</span> TomoNexus</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+(function(){
+  const doc=document.getElementById('doc'), btn=document.getElementById('voiceToggle');
+  const track=btn.querySelector('.track'), knob=btn.querySelector('.knob');
+  const NOTE={
+    on:'メモ・記憶・学習記録・キャラ・キーはPCに保存されます（クラウドフォルダを指定するのも自由）。会話の音声はどこにも保存しません。',
+    off:'読み上げをオフにしてキーボードで会話すると、アバターは字幕と表情・口の動きで反応し、外に出るのは Claude への文章だけになります。'
+  };
+  let off=false;
+  btn.addEventListener('click',()=>{
+    off=!off;
+    btn.setAttribute('aria-pressed',String(off));
+    track.style.background=off?'var(--local)':'var(--rule)';
+    knob.style.left=off?'19px':'3px';
+    document.querySelectorAll('.voice-dep').forEach(el=>el.style.opacity=off?'0.25':'1');
+    doc.classList.toggle('voice-off',off);
+    document.getElementById('outCount').textContent=off?'1':'3';
+    document.getElementById('footNote').textContent=off?NOTE.off:NOTE.on;
+  });
+})();
+</script>
+</body>
+</html>

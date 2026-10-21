@@ -307,3 +307,36 @@ b,strong{color:#fff}
 .spot-name{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:-4px 0 -2px}
 .spot-name b{font-weight:900;font-size:16px;color:#06202a;background:var(--cyan);border-radius:999px;padding:5px 16px;box-shadow:0 0 22px rgba(95,230,255,.45)}
 .spot-name span{color:var(--soft);font-size:14px;font-weight:700}
+
+/* ---------- 安心して試してもらうために ---------- */
+.safe-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.safe-card{background:rgba(255,255,255,.04);border:1.5px solid var(--line);border-radius:24px;padding:26px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.safe-card h3{font-weight:900;font-size:20px;line-height:1.45}
+.safe-card p{color:var(--soft);font-size:15.5px}
+.safe-ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center}
+.safe-ico.vt{color:#5ff0b0;background:rgba(95,240,176,.1);border:1.5px solid rgba(95,240,176,.45)}
+.safe-ico.hash{color:var(--cyan);background:rgba(95,230,255,.1);border:1.5px solid rgba(95,230,255,.45)}
+.safe-btn{align-self:flex-start;margin-top:auto}
+.safe-file{margin:4px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;font-size:14.5px}
+.safe-file dt{font-weight:900;color:#fff}
+.safe-file dd{margin:0;color:var(--soft);min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+code.hash{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;color:var(--cyan);background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:8px;padding:6px 10px;word-break:break-all;line-height:1.5;flex:1 1 220px}
+.copy{font:inherit;font-size:13px;font-weight:700;color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;padding:6px 14px;min-height:34px;cursor:pointer}
+.copy:hover{border-color:var(--cyan)}
+.copy.done{color:#06202a;background:#5ff0b0;border-color:#5ff0b0}
+.safe-how{margin-top:18px;background:rgba(255,255,255,.03);border:1.5px solid var(--line);border-radius:18px;padding:0 22px}
+.safe-how summary{cursor:pointer;font-weight:900;padding:16px 0;list-style:none}
+.safe-how summary::-webkit-details-marker{display:none}
+.safe-how summary::before{content:"▸ ";color:var(--violet)}
+.safe-how[open] summary::before{content:"▾ "}
+.safe-how ol{margin:0 0 10px;padding-left:1.3em;display:flex;flex-direction:column;gap:10px;color:#dfe4f4;font-size:15px}
+.safe-how p{color:var(--mute);font-size:14px;padding-bottom:18px}
+.safe-how code{font-family:ui-monospace,Consolas,monospace;font-size:13.5px;color:var(--cyan)}
+.cmd{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:8px}
+.cmd code{background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:8px;padding:6px 10px;word-break:break-all}
+/* 更新履歴：ダウンロードの確認 */
+.dl-box{margin-top:6px;border:1.5px solid rgba(95,240,176,.35);background:rgba(95,240,176,.05);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.dl-box .dl-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-weight:900;color:#5ff0b0}
+.dl-box .dl-head span{color:var(--soft);font-weight:700}
+.dl-box .dl-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.dl-box a{font-weight:700}

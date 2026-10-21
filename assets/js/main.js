@@ -125,3 +125,41 @@ if (location.hash) {
   const d = document.querySelector(location.hash);
   if (d && d.tagName === "DETAILS") d.open = true;
 }
+
+// コピーボタン
+document.querySelectorAll("[data-copy-from]").forEach((b) =>
+  b.addEventListener("click", async () => {
+    const src = document.querySelector(b.dataset.copyFrom);
+    if (!src) return;
+    try {
+      await navigator.clipboard.writeText(src.textContent.trim());
+      const t = b.textContent;
+      b.textContent = "コピーしました";
+      b.classList.add("done");
+      setTimeout(() => { b.textContent = t; b.classList.remove("done"); }, 1600);
+    } catch (e) {}
+  })
+);
+
+// 安心して試してもらうために：最新版の SHA-256 / VirusTotal を history.json から表示
+(() => {
+  const box = document.querySelector("[data-safety]");
+  if (!box) return;
+  fetch("https://jinaxion.github.io/TomoNexus-update/history.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : Promise.reject()))
+    .then((h) => {
+      const e = (h.entries || []).find((x) => x.download && x.download.sha256);
+      if (!e) return Promise.reject();
+      const d = e.download;
+      box.querySelector("[data-safe-sha]").textContent = d.sha256;
+      box.querySelector("[data-safe-file]").textContent = `${d.file || ""}（v${e.version}${d.size ? "・" + d.size : ""}）`;
+      if (d.file) box.querySelector("[data-safe-cmd]").textContent = `Get-FileHash .\\${d.file}`;
+      const vt = box.querySelector("[data-safe-vt]");
+      if (/^https:\/\/www\.virustotal\.com\//.test(d.virustotal || "")) vt.href = d.virustotal;
+      else vt.hidden = true;
+    })
+    .catch(() => {
+      box.querySelector("[data-safe-sha]").textContent = "更新履歴ページでご確認ください";
+      box.querySelector("[data-safe-vt]").href = "history.html";
+    });
+})();

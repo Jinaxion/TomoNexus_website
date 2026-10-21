@@ -46,6 +46,31 @@
           ul.append(row);
         });
       if (ul.children.length) card.append(ul);
+      const d = e.download;
+      if (d && d.sha256) {
+        const box = el("div", "dl-box");
+        const head = el("div", "dl-head", "ダウンロードの確認");
+        if (d.file) head.append(el("span", null, d.file + (d.size ? "（" + d.size + "）" : "")));
+        box.append(head);
+        const row = el("div", "dl-row");
+        const code = el("code", "hash", d.sha256);
+        const btn = el("button", "copy", "SHA-256をコピー");
+        btn.type = "button";
+        btn.addEventListener("click", () =>
+          navigator.clipboard.writeText(d.sha256).then(() => {
+            btn.textContent = "コピーしました"; btn.classList.add("done");
+            setTimeout(() => { btn.textContent = "SHA-256をコピー"; btn.classList.remove("done"); }, 1600);
+          }).catch(() => {})
+        );
+        row.append(code, btn);
+        box.append(row);
+        if (/^https:\/\/www\.virustotal\.com\//.test(d.virustotal || "")) {
+          const a = el("a", null, "VirusTotal の検査結果を見る ↗");
+          a.href = d.virustotal; a.target = "_blank"; a.rel = "noopener";
+          box.append(a);
+        }
+        card.append(box);
+      }
       li.append(card);
       list.append(li);
     });

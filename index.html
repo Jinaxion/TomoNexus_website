@@ -308,6 +308,47 @@
   </div>
 </section>
 
+<!-- ============ SAFETY ============ -->
+<section class="section" id="safety" data-safety>
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">Safe to try</p>
+      <h2 class="h2"><span class="nb">個人開発のアプリでも、</span><br><span class="nb">安心して</span><span class="nb">試してもらうために。</span></h2>
+      <p class="lead">TomoNexus は個人が作った「署名なし」のアプリなので、初回はWindowsの警告（SmartScreen）が出ます。そのかわり、作者がやったことを、誰でも確かめられる形で公開しています。</p>
+    </div>
+    <div class="safe-grid">
+      <article class="safe-card reveal">
+        <div class="safe-ico vt" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8"/></svg>
+        </div>
+        <h3>VirusTotal で検査済み</h3>
+        <p>配布しているZIPを、多数のウイルス対策ソフトでまとめて検査しました。結果は誰でも同じページで確かめられます。</p>
+        <a class="btn btn-ghost safe-btn" data-safe-vt href="https://www.virustotal.com/" target="_blank" rel="noopener">検査結果を見る ↗</a>
+      </article>
+      <article class="safe-card reveal">
+        <div class="safe-ico hash" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h14M5 15h14M10 4L8 20M16 4l-2 16"/></svg>
+        </div>
+        <h3>SHA-256 で「同じファイル」か確かめる</h3>
+        <p>手元のZIPが、検査を受けたものと1バイトも違わないことを確かめられます。</p>
+        <dl class="safe-file">
+          <dt>ファイル</dt><dd data-safe-file>—</dd>
+          <dt>SHA-256</dt><dd><code class="hash" data-safe-sha>読み込み中…</code><button class="copy" type="button" data-copy-from="[data-safe-sha]">コピー</button></dd>
+        </dl>
+      </article>
+    </div>
+    <details class="safe-how reveal">
+      <summary>SHA-256 の確かめ方（Windows）</summary>
+      <ol>
+        <li>ダウンロードしたZIPがあるフォルダを開き、アドレス欄に <code>powershell</code> と入力して Enter</li>
+        <li>次のコマンドを貼り付けて Enter<div class="cmd"><code data-safe-cmd>Get-FileHash .\TomoNexus-1.0.0-win.zip</code><button class="copy" type="button" data-copy-from="[data-safe-cmd]">コピー</button></div></li>
+        <li>表示された <b>Hash</b> が、上の SHA-256 と同じならOKです（大文字・小文字の違いは気にしなくて大丈夫）</li>
+      </ol>
+      <p>違っていた場合は、展開せずに削除して、BOOTHからダウンロードし直してください。</p>
+    </details>
+  </div>
+</section>
+
 <!-- ============ FAQ ============ -->
 <section class="section" id="faq">
   <div class="wrap">
@@ -336,6 +377,7 @@
       <details><summary>ダウンロードしたら警告が出ました</summary><div class="a">
         <p>ZIPを展開する<b>前に</b>、右クリック → プロパティ →「許可する（ブロック解除）」にチェックしてください。</p>
         <p>署名なしのアプリのため、初回にWindowsの警告（SmartScreen）が出ます。「詳細情報 → 実行」で起動できます。</p>
+        <p>不安なときは、<a href="#safety">VirusTotal の検査結果と SHA-256</a> で、配布しているファイルそのものかを確かめられます。</p>
         <p>ダウンロードフォルダやクラウド同期フォルダ以外への展開をおすすめします。</p>
       </div></details>
       <details><summary>アンインストールの方法は？</summary><div class="a">

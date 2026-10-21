@@ -250,7 +250,7 @@
     <div class="head reveal">
       <p class="eyebrow">Trial &amp; License</p>
       <h2 class="h2">体験版と製品版</h2>
-      <p class="lead">体験版（無料）はそのまま全機能を試せます。製品版ライセンス（.lic ファイル）を読み込むだけで制限が外れ、学習記録・メモはそのまま引き継がれます。</p>
+      <p class="lead">体験版（無料）はそのまま全機能を試せます。製品版ライセンス（.lic ファイル）を読み込むだけで制限が外れ、学習記録・メモはそのまま引き継がれます。<a href="#after-purchase" data-open-faq>購入後の手順 →</a></p>
     </div>
     <div class="trial">
       <div class="card reveal"><h3>体験版の制限</h3><ul><li>音声会話は1日15分まで（テキスト会話と単語の復習はOK）</li><li>メモの保存は3件まで</li><li>衣装・ごほうびの解放は製品版のみ</li></ul></div>
@@ -286,6 +286,15 @@
   <div class="wrap">
     <div class="head center reveal"><p class="eyebrow">FAQ</p><h2 class="h2">よくある質問</h2></div>
     <div class="faq reveal">
+      <details id="after-purchase"><summary>製品版を買ったあとは、どうすればいいですか？</summary><div class="a">
+        <p>体験版を入れたままで大丈夫です。アンインストールや入れ直しは要りません。</p>
+        <ol style="margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:6px">
+          <li>BOOTHでお支払いが終わったら、BOOTHの<b>ライブラリ</b>（購入した商品の一覧）からライセンスファイル <code>tomo-license.lic</code> をダウンロードします</li>
+          <li>TomoNexus の <b>設定 → ライセンス</b> で「ライセンスファイルを選ぶ」を押すか、ファイルを画面にドラッグ＆ドロップします</li>
+          <li>その場で製品版になります（再起動は要りません）。体験版での学習記録・メモはそのまま引き継がれます</li>
+        </ol>
+        <p>ライセンスファイルは、なくしてもBOOTHのライブラリから何度でもダウンロードし直せます。ライセンスの確認はPCの中だけで行うので、インターネットにつながっていなくても使えます。</p>
+      </div></details>
       <details><summary>話した内容はAIの学習に使われますか？</summary><div class="a">
         <p><b>① APIキー：</b>Anthropic の商用規約により、送った内容がAIの学習に使われることはありません（標準30日保持）。</p>
         <p><b>② Claude Pro / Max など：</b>Anthropic の一般向け規約が適用されます。claude.ai の設定で「モデル改善に協力」がオンだと、会話が学習に使われ5年間保持されます。気になる方はオフにしてからご利用ください（セットアップ画面に設定ページへのボタンがあります）。</p>

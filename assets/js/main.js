@@ -113,3 +113,15 @@ document.querySelectorAll(".pan").forEach((pan) => {
     })
     .catch(() => {});
 })();
+
+// FAQへのリンクで、その項目を開いてから移動
+document.querySelectorAll("[data-open-faq]").forEach((a) =>
+  a.addEventListener("click", () => {
+    const d = document.querySelector(a.getAttribute("href"));
+    if (d && d.tagName === "DETAILS") d.open = true;
+  })
+);
+if (location.hash) {
+  const d = document.querySelector(location.hash);
+  if (d && d.tagName === "DETAILS") d.open = true;
+}

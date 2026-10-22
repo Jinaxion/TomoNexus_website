@@ -7,6 +7,7 @@ GitHub Pages で公開している TomoNexus の公式サイトです。ビル�
 ```
 index.html          トップ（LP）
 shikumi.html        しくみ（データの流れ・費用・学習利用）
+obsidian.html       Obsidian連携ガイド（画像は assets/img/obsidian/）
 history.html        更新履歴（TomoNexus-update の history.json / update.json を読んで表示）
 terms.html          利用規約
 privacy.html        プライバシーポリシー

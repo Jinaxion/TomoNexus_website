@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Obsidian連携ガイド — TomoNexus</title>
+<meta name="description" content="TomoNexus と Obsidian をつないで「第2の脳」を育てる方法。保存先の設定、保存のしかた、Vault の中身、キャラが読む範囲。">
+<meta name="theme-color" content="#060918">
+<link rel="icon" type="image/png" href="assets/img/icon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Sora:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/img/icon.png" alt=""><span><span class="t">Tomo</span><span class="n">Nexus</span></span></a>
+    <nav class="nav" aria-label="メインメニュー">
+      <a href="./#features">できること</a>
+      <a href="./#movie">動画</a>
+      <a href="./#requirements">必要なもの・料金</a>
+      <a href="shikumi.html">しくみ</a>
+      <a href="obsidian.html" aria-current="page">Obsidian連携</a>
+      <a href="history.html">更新履歴</a>
+      <a href="./#faq">よくある質問</a>
+    </nav>
+    <a class="btn btn-primary" data-booth href="./#download"><span data-booth-label>体験版を試す</span></a>
+    <button class="menu-btn" aria-label="メニュー" aria-expanded="false">☰</button>
+  </div>
+</header>
+<main class="guide">
+
+<section class="g-hero">
+  <div>
+    <p class="eyebrow">Obsidian guide</p>
+    <h1><span class="nb">Obsidian と組み合わせて、</span><span class="nb">「第2の脳」を育てる。</span></h1>
+    <p class="lead">TomoNexus で話した内容は、メモも「記憶」も、ふつうの Markdown（.md）ファイルです。保存先を Obsidian のフォルダ（Vault）にすれば、話すたびにノートが増えて、つながっていきます。</p>
+    <div class="g-pills"><span>Obsidian は無料（個人利用）</span><span>使わなくても TomoNexus は動きます</span><span>設定は1分</span></div>
+  </div>
+  <figure>
+    <img src="assets/img/obsidian/graph.webp" alt="Obsidian のグラフビュー。Tomo を中心にノートがつながっている" width="800" height="762">
+    <figcaption>Obsidian のグラフビュー：キャラとの会話から生まれたノートが「Tomo」を中心につながっていく</figcaption>
+  </figure>
+</section>
+
+<nav class="g-toc" aria-label="このページの内容">
+  <a href="#g1">1. Obsidian を用意</a><a href="#g2">2. 保存先にする</a><a href="#g3">3. メモを保存</a><a href="#g4">4. Vault の中身</a><a href="#g5">5. キャラが読む範囲</a><a href="#g6">発展：Claude にも読ませる</a><a href="#gfaq">よくある質問</a>
+</nav>
+
+<section class="g-step" id="g1">
+  <div class="g-text">
+    <span class="g-num"><b>1</b>STEP</span>
+    <h2>Obsidian を入れて、Vault を用意する</h2>
+    <p>Obsidian をインストールして、メモを置くフォルダ（Obsidian では「保管庫」「Vault」と呼びます）を作ります。もう使っている方は、いまの Vault をそのまま使えます。</p>
+    <ul>
+      <li><a href="https://obsidian.md/" target="_blank" rel="noopener">Obsidian の公式サイト</a>からダウンロード</li>
+      <li>Vault の作り方：<a href="https://obsidian.md/ja/help/manage-vaults" target="_blank" rel="noopener">保管庫の管理 - Obsidian ヘルプ</a></li>
+    </ul>
+    <p class="g-note">Obsidian を使わない場合は、保存先を「アプリ内」のままにしてください。メモはアプリ内に保存され、あとから .md で書き出せます。</p>
+  </div>
+  <div class="g-text">
+    <h2 style="margin-top:0;font-size:18px">こんな人に向いています</h2>
+    <ul>
+      <li>メモを書くのが続かないけど、知識はためておきたい</li>
+      <li>Obsidian を始めたけど、書く量が追いつかない</li>
+      <li>英会話の記録や単語帳を、ほかのメモと一緒に見たい</li>
+    </ul>
+  </div>
+</section>
+
+<section class="g-step flip" id="g2">
+  <div class="g-text">
+    <span class="g-num"><b>2</b>STEP</span>
+    <h2>TomoNexus の保存先を、その Vault にする</h2>
+    <p>初回のセットアップの最後（「学習とメモの設定をする」）で選べます。</p>
+    <ol>
+      <li>「メモと記録の保存先」で <b>Obsidian のフォルダ</b> を選ぶ</li>
+      <li><b>フォルダを選ぶ</b> で、Vault のフォルダを指定</li>
+      <li><b>書き込みテスト</b> を押して「OK」が出れば完了</li>
+    </ol>
+    <p>会話の記録は Vault の中の <code>20_Areas/英会話</code> に書かれます（画面の「保存する場所」に表示されます）。</p>
+    <p class="g-note">セットアップをスキップした場合や、あとから変えたい場合は、設定画面からいつでも指定できます。</p>
+  </div>
+  <figure class="g-shot">
+    <a href="assets/img/obsidian/setup.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/obsidian/setup.webp" alt="セットアップ画面：メモと記録の保存先で Obsidian のフォルダを選び、書き込みテストで OK が出ている" loading="lazy" width="1012" height="773"></a>
+    <figcaption>セットアップ 9/9「学習とメモの設定をする」</figcaption>
+  </figure>
+</section>
+
+<section class="g-step" id="g3">
+  <div class="g-text">
+    <span class="g-num"><b>3</b>STEP</span>
+    <h2>Memo で話して、保存する</h2>
+    <p>Memo モードでキャラと話して、まとまったら <b>保存</b>。保存の前に、どこに・どんな形で書くかを確認できます。</p>
+    <ul>
+      <li><b>保存先とファイル名</b>：デイリーノートなら <code>01_Daily/2026-10-22</code> の末尾に追記。アイデアなどは <code>00_Inbox</code> に新しいノートとして保存</li>
+      <li><b>タグ</b>：話の内容から候補を出します（frontmatter に入ります）</li>
+      <li><b>関連ノートへのリンク</b>：Vault のノート名から、つながりそうなノートを提案。選んだものだけ <code>[[ ]]</code> で末尾に足します</li>
+      <li><b>中身</b>：保存する前に確認・修正できます。中身の無い見出しは保存しません</li>
+    </ul>
+    <p class="g-note">リンクの候補を出すときに見るのは、ノートの名前だけです。AI は「提案」するだけで、採用するかはあなたが決めます。</p>
+  </div>
+  <figure class="g-shot">
+    <a href="assets/img/obsidian/save.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/obsidian/save.webp" alt="メモを保存の画面：保存先フォルダ 01_Daily、ファイル名、タグ、関連ノートへのリンク候補、中身のプレビュー" loading="lazy" width="1039" height="918"></a>
+    <figcaption>「メモを保存」：保存先・タグ・リンク候補・中身をまとめて確認</figcaption>
+  </figure>
+</section>
+
+<section class="g-step flip" id="g4">
+  <div class="g-text">
+    <span class="g-num"><b>4</b>STEP</span>
+    <h2>Vault の中は、こうなります</h2>
+    <p>TomoNexus が書くのは、主に次の場所です。どれもふつうの .md ファイルなので、Obsidian でそのまま読めて、手で直せます。</p>
+<div class="g-tree" role="img" aria-label="Vault のフォルダ構成"><span class="o">00_Inbox/</span>          <span class="c">… Memo で作った新しいノート</span>
+<span class="o">01_Daily/</span>          <span class="c">… デイリーノート（末尾に追記）</span>
+20_Areas/
+└ <span class="h">英会話/</span>          <span class="c">… 会話の記録の置き場</span>
+   ├ <span class="h">shared/</span>         <span class="c">… 全キャラ共通</span>
+   │  ├ 英会話プロファイル
+   │  ├ 単語帳
+   │  ├ 瞬発トレーニング/
+   │  └ 振り返り/
+   └ <span class="h">characters/</span>
+      ├ Tomo/       <span class="c">… キャラごと</span>
+      │  ├ セッション/  <span class="c">… 会話の記録</span>
+      │  ├ トークノート/
+      │  ├ キャラクタ
+      │  └ 関係
+      ├ Lily/
+      └ Taka/</div>
+    <p style="margin-top:12px">画像の「単語帳」は、会話から自動でできたノートを Obsidian で開いたところです。意味・発音・例文に加えて、どの会話で出てきたかへのリンクも付きます。</p>
+  </div>
+  <div style="display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1fr);gap:14px;align-items:start">
+    <figure class="g-shot">
+      <a href="assets/img/obsidian/folders.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/obsidian/folders.webp" alt="Obsidian のファイル一覧：20_Areas/英会話 の下に characters と shared" loading="lazy" width="298" height="540"></a>
+      <figcaption>Vault の例</figcaption>
+    </figure>
+    <figure class="g-shot">
+      <a href="assets/img/obsidian/note.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/obsidian/note.webp" alt="Obsidian で開いた単語帳：type と tags のプロパティ、表現ごとに意味・発音・例文・初出のリンク" loading="lazy" width="800" height="944"></a>
+      <figcaption>shared/単語帳</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="g-step" id="g5">
+  <div class="g-text">
+    <span class="g-num"><b>5</b>STEP</span>
+    <h2>キャラが Vault をどこまで読むかは、あなたが決める</h2>
+    <p>キャラクタの設定の <b>記憶とアクセス</b> タブで、キャラごとに「記憶の範囲」を選べます。</p>
+    <ul>
+      <li><b>秘書レベル</b>：Vault のメモも読んで、あなたの文脈を知ったうえで話します。メモも任せられます。ほかのキャラとの話は、聞かれるまで持ち出しません</li>
+      <li><b>Talk 専属</b>：そのキャラと話したことだけで完結。Vault のほかのメモは読みません</li>
+    </ul>
+    <p>細かい設定で「Vault のメモを読む」「Vault にメモを保存する」を別々にオン／オフでき、Obsidian 以外のフォルダを追加することもできます（追加したフォルダは読み取りのみが既定）。</p>
+    <p class="g-note"><code>.obsidian</code> の設定フォルダや、鍵・パスワードが入りがちなファイル（<code>.env</code>・<code>*.key</code>・<code>*.pem</code> など）は、最初から読みません。範囲を狭めても、これまでの会話の記録は消えません。</p>
+  </div>
+  <figure class="g-shot narrow">
+    <a href="assets/img/obsidian/access.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/obsidian/access.webp" alt="記憶とアクセスタブ：秘書レベルと Talk 専属、メモ担当、Vault のメモを読む・保存するのチェック、登録した場所" loading="lazy" width="420" height="742"></a>
+    <figcaption>キャラクタ → 記憶とアクセス</figcaption>
+  </figure>
+</section>
+
+<section class="g-adv" id="g6">
+  <p class="eyebrow">Advanced</p>
+  <h2>発展：同じ Vault を Claude にも読ませる</h2>
+  <p>TomoNexus で育った Vault は、Claude Code など Vault を読める AI ツールにも、そのまま渡せます。あなたの会話・メモ・学習記録を知った「相棒」として、仕事や勉強にも使えるようになります。</p>
+  <p style="margin-top:10px;color:var(--soft)">Claude Pro / Max で TomoNexus を使う方は、Claude Code のインストールが必要なので、その参考にもなります。</p>
+  <a class="g-link" href="https://www.youtube.com/watch?v=Ze-mV9X2exo" target="_blank" rel="noopener">
+    <span class="yt" aria-hidden="true">▶</span>
+    <span><b>参考動画：Obsidian × Claude Code で“第2の脳”を作る方法</b><small>むっちょ【Claude Code攻略】さん（YouTube）・7:41〜「第2の脳を賢くする3つの方法」</small></span>
+  </a>
+  <p style="margin-top:10px;color:var(--mute);font-size:13px">※ TomoNexus とは別の方が作った動画です。</p>
+</section>
+
+<section id="gfaq" style="margin-top:56px">
+  <p class="eyebrow">FAQ</p>
+  <h2 class="h2" style="font-size:clamp(24px,3.4vw,32px);margin:8px 0 20px">よくある質問</h2>
+  <div class="faq">
+    <details><summary>いま使っている Vault に入れても大丈夫？</summary><div class="a">
+      <p>大丈夫です。TomoNexus が書き込むのは、会話の記録（<code>20_Areas/英会話</code>）と、保存のときに確認したメモの保存先だけです。既存のノートを書き換えるのは、デイリーノートの末尾に追記するときだけです。</p>
+      <p>読む範囲は、キャラごとの「記憶とアクセス」で決められます。</p>
+    </div></details>
+    <details><summary>Vault を Google ドライブなどで同期していても使える？</summary><div class="a">
+      <p>使えます。保存は一時ファイルを書いてから置き換える方式で、同期と保存がぶつかったときは、元のノートを上書きせずに別名（<code>-conflict</code> 付き）で保存します。</p>
+    </div></details>
+    <details><summary>AI に Vault の中身が全部送られる？</summary><div class="a">
+      <p>いいえ。会話のときに Claude へ送るのは、いまの話に関係しそうなノートの一部だけです。どのノートを読めるかは「記憶とアクセス」の範囲に従い、Talk 専属のキャラには Vault のメモは渡りません。</p>
+      <p>データがどこを通るかは <a href="shikumi.html">しくみ</a> のページをご覧ください。</p>
+    </div></details>
+    <details><summary>Obsidian を使わないと損？</summary><div class="a">
+      <p>いいえ。アプリ内保存でも、メモ・記憶・単語帳・学習記録はすべて使えます。あとから Obsidian に切り替えたくなったら、設定で保存先を変えられます。</p>
+    </div></details>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-links"><a href="./">トップ</a><a href="shikumi.html">しくみ</a><a href="obsidian.html">Obsidian連携</a><a href="https://jinaxion.booth.pm/items/9001516" target="_blank" rel="noopener">BOOTH</a><a href="history.html">更新履歴</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a></div>
+    <p>© <span data-year>2026</span> TomoNexus</p>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

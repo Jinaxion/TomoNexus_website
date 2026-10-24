@@ -49,6 +49,7 @@
       <a class="btn btn-primary btn-lg" data-booth href="#download"><span data-booth-label>無料の体験版を試す</span></a>
       <a class="btn btn-ghost btn-lg" href="#features">できることを見る</a>
     </div>
+    <a class="hero-new" href="#kikigaki"><b>NEW</b>聞き書きモード：話しっぱなしで、メモが育つ</a>
     <p class="hero-note">Windows 10 / 11 向けデスクトップアプリ<a class="ver-pill" href="history.html" data-latest-pill hidden>最新版 <b></b></a></p>
   </div>
 
@@ -129,9 +130,92 @@
           <li>メモの持ち主はあなた。AIは「提案」するだけで、<b>採用/却下はあなた</b>が選べます<small>編集中の部分は書き換えません。Ctrl+Zで戻せます</small></li>
           <li>デイリー、アイデア出し、悩みの壁打ち、やること洗い出し、打ち合わせ、学びメモの<b>テンプレつき</b></li>
           <li>Obsidianに保存すると、frontmatterと<b>[[リンク]]</b>の候補もつけてくれます</li>
+          <li><b>聞き書きモード</b>：返事なしで話しっぱなしにすると、勝手にメモにまとまる（製品版） <a href="#kikigaki">詳しく →</a></li>
         </ul>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ============ 聞き書きモード ============ -->
+<section class="section" id="kikigaki">
+  <div class="wrap">
+    <div class="head center reveal">
+      <p class="eyebrow">New</p>
+      <div class="kk-badges"><b>聞き書きモード</b><span>製品版</span></div>
+      <h2 class="h2"><span class="nb">話しっぱなしで、</span><span class="nb">メモが育つ。</span></h2>
+      <p class="lead">考えごとを、声に出すだけ。キャラは返事をせずにうなずきながら、話したことを書きとめて、論点・気づき・決めたこと・次の一歩にまとめていきます。</p>
+    </div>
+
+    <figure class="kk-hero reveal">
+      <div class="kk-frame"><a href="assets/img/kikigaki/solo-live.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/kikigaki/solo-live.webp" alt="聞き書き中の画面：左にキャラ、右に話した内容が時刻つきで記録されていく" loading="lazy" width="1263" height="488"></a>
+      <span class="rec" aria-hidden="true"><i></i>聞き書き中</span></div>
+      <figcaption>ひとりで考えごと中。キャラは黙って聞いて、話した内容が時刻つきでどんどん記録されていく</figcaption>
+    </figure>
+
+    <div class="kk-steps">
+      <article class="kk-step reveal">
+        <span class="n"><b>1</b>START</span>
+        <h3>［🎙 聞き書き］を押して、話しはじめる</h3>
+        <p>「ひとりで考えごと」か「会議」を選んで、テーマやプロジェクトを入れるだけ。空欄のままでも始められます。</p>
+        <img src="assets/img/kikigaki/start-solo.webp" alt="聞き書きをはじめるパネル：ひとりで考えごと／会議、テーマ、プロジェクト、保存先" loading="lazy" width="460" height="299">
+      </article>
+      <article class="kk-step reveal">
+        <span class="n"><b>2</b>LISTEN</span>
+        <h3>キャラは黙って、書きとめる</h3>
+        <p>声で返事をしないので、考えが途切れません。数分ごとに、記録をメモへ少しずつ整理していきます。</p>
+        <div class="kk-log" aria-hidden="true">
+          <span><em>14:34</em>だったらスープの一種類だけを季節で変えるのもありかも。</span>
+          <span><em>14:34</em>それなら作る数は増えないし、季節感も出せる。</span>
+          <span><em>14:34</em>そうだ、季節限定はスープの1枠だけにしよう。</span>
+          <span class="act">🙂 うなずき・腕組みで「聞いてるよ」</span>
+        </div>
+      </article>
+      <article class="kk-step reveal">
+        <span class="n"><b>3</b>SUMMARY</span>
+        <h3>「Tomo、まとめて」で、整理された案が届く</h3>
+        <p>論点・気づき・決めたこと・次の一歩・不明点に整えた案を出します。採用するかは、あなたが決められます。</p>
+        <img src="assets/img/kikigaki/solo-review.webp" alt="メモ全体を整理した案：テーマ、考えたこと。採用・却下のボタン" loading="lazy" width="654" height="405">
+      </article>
+    </div>
+
+    <div class="kk-points">
+      <div class="card reveal"><span class="ico">📂</span><h3>プロジェクトのノートをふまえる</h3><p>プロジェクトを選ぶと、これまでのノートの要点をつかんだうえで整理。「前は7:30開店だったけど、8時に変える？」のように、食い違いを根拠つきで確認します。</p></div>
+      <div class="card reveal"><span class="ico">✍️</span><h3>聞き間違いもフォロー</h3><p>「小麦堂 → こむぎ堂」のように、プロジェクトの言葉に合わせて用語を補正。あやしいところは「不明点」に出します。</p></div>
+      <div class="card reveal"><span class="ico">🗂️</span><h3>まとめと記録は、別々の .md に</h3><p>整理したメモと、時刻つきの記録（逐語）を並べて保存。Obsidian でそのまま読めて、リンクで行き来できます。</p></div>
+      <div class="card reveal"><span class="ico">🔁</span><h3>途中で止まっても、続きから</h3><p>アプリが落ちても PC がスリープしても、記録はこまめに保存。次に開くと、同じ質問をせずに続きから書きとめます。</p></div>
+    </div>
+
+    <div class="kk-meeting reveal">
+      <div class="kk-meeting-top">
+        <div>
+          <p class="eyebrow" style="color:var(--orange)">Meeting</p>
+          <h3>会議の議事録にも、そのまま使える。</h3>
+          <ul>
+            <li>参加者みんなの声を記録（会議のときは、本人の声だけを聞く設定を自動でオフ）</li>
+            <li>「Tomo、まとめて」で、<b>決まったこと・ToDo（担当・期限）・次のステップ</b>に整理</li>
+            <li>前回の議事録やプロジェクトのノートと照らして、<b>決まっていない担当や、前回と変わったところ</b>を根拠つきで指摘</li>
+            <li>頼みごとは「Tomo、〜」と名前で呼んだときだけ。会議の中の「まとめて」と取り違えません</li>
+          </ul>
+        </div>
+        <figure class="kk-fig">
+          <a href="assets/img/kikigaki/meeting-result.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/kikigaki/meeting-result.webp" alt="議事録の不明点・確認すること：前回は平日7:30開店の方向だったが今回は8時にした、など根拠つきの確認" loading="lazy" width="654" height="649"></a>
+          <figcaption>まとめのあとの「不明点・確認すること」と「提案」</figcaption>
+        </figure>
+      </div>
+      <div class="kk-meeting-row">
+        <figure class="kk-fig">
+          <a href="assets/img/kikigaki/meeting-live.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/kikigaki/meeting-live.webp" alt="会議を聞き書き中の画面：発言の記録と、組み立てられていく議事録" loading="lazy" width="1600" height="900"></a>
+          <figcaption>会議を聞き書き中：発言の記録と、組み立てられていく議事録</figcaption>
+        </figure>
+        <figure class="kk-fig">
+          <a href="assets/img/kikigaki/meeting-obsidian.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/kikigaki/meeting-obsidian.webp" alt="Obsidian で開いた議事録。プロジェクトの メモ／会議 フォルダに、まとめと記録が並んでいる" loading="lazy" width="1235" height="982"></a>
+          <figcaption>Obsidian：プロジェクトの「メモ」「会議」に、まとめと記録が並ぶ</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <p class="kk-note reveal">※ 聞き書きモードは製品版の機能です。長く話すときは、聞き取りに Groq のキー（無料）を入れておくのがおすすめです（Azure の無料枠を節約できます）。会議で使うときは、参加する人に記録することを伝えてから使ってください。</p>
   </div>
 </section>
 
@@ -280,7 +364,7 @@
       <p class="lead">体験版（無料）はそのまま全機能を試せます。製品版ライセンス（.lic ファイル）を読み込むだけで制限が外れ、学習記録・メモはそのまま引き継がれます。<a href="#after-purchase" data-open-faq>購入後の手順 →</a></p>
     </div>
     <div class="trial">
-      <div class="card reveal"><h3>体験版の制限</h3><ul><li>音声会話は1日15分まで（テキスト会話と単語の復習はOK）</li><li>メモの保存は3件まで</li><li>衣装・ごほうびの解放は製品版のみ</li></ul></div>
+      <div class="card reveal"><h3>体験版の制限</h3><ul><li>音声会話は1日15分まで（テキスト会話と単語の復習はOK）</li><li>メモの保存は3件まで</li><li>衣装・ごほうびの解放、聞き書きモードは製品版のみ</li></ul></div>
       <div class="card reveal"><h3>プライバシーとデータの扱い</h3><ul><li>メモ・記憶はあなたのPCに保存</li><li>会話の音声はどこにも保存しません</li><li>ログに会話・メモ本文・APIキーは残しません</li><li>APIキーは Windows の資格情報マネージャーに保存</li></ul><p style="margin-top:6px"><a href="shikumi.html">データの流れを詳しく見る →</a></p></div>
     </div>
   </div>
@@ -298,6 +382,7 @@
         <li>メモを取る習慣がない／書くのが面倒で続かない</li>
         <li>Obsidianで「第2の脳」を作りたいが、書くのが追いつかない</li>
         <li>考えごとの壁打ち相手がほしい（ちょっと人間っぽい相手）</li>
+        <li>考えを声に出しながら整理したい／会議の議事録を楽にしたい</li>
         <li>お気に入りのVRMキャラと、関係を育てながら話したい</li>
       </ul></div>
       <div class="card no reveal"><h3 class="c-orange">正直に言うと、向かない方</h3><ul>
@@ -368,6 +453,10 @@
         <p><b>① APIキー：</b>Anthropic の商用規約により、送った内容がAIの学習に使われることはありません（標準30日保持）。</p>
         <p><b>② Claude Pro / Max など：</b>Anthropic の一般向け規約が適用されます。claude.ai の設定で「モデル改善に協力」がオンだと、会話が学習に使われ5年間保持されます。気になる方はオフにしてからご利用ください（セットアップ画面に設定ページへのボタンがあります）。</p>
         <p>TomoNexus が Claude のログイン情報（パスワード・トークン）を読んだり預かったりすることはありません。</p>
+      </div></details>
+      <details><summary>聞き書きモードを会議で使うと、ほかの人の声も送られますか？</summary><div class="a">
+        <p>はい。会議では参加者の声も、文字にするために聞き取りのサービス（Groq または Azure）へ送られます。初めて会議で使うときにアプリからもお知らせします。参加する人に、記録することを伝えてから使ってください。</p>
+        <p>音声はどこにも保存しません。残るのは、文字にした記録とまとめのメモ（.md）だけです。</p>
       </div></details>
       <details><summary>音声を使わずに使えますか？</summary><div class="a">
         <p>はい。読み上げをオフにすると、アバターは字幕と表情・口の動きで反応します。キーボードだけで会話もでき、その場合PCの外に出るのは Claude への文章だけです。</p>

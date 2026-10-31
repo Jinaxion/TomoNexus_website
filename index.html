@@ -414,6 +414,7 @@
           <a class="btn btn-ghost safe-btn" data-safe-vt href="https://www.virustotal.com/" target="_blank" rel="noopener">ZIP の検査結果を見る ↗</a>
           <span data-safe-scans></span>
         </div>
+        <p class="safe-fp">※ 一部の会社で「怪しい」と判定されることがあります。TomoNexus の一部（tomo-backend.exe）は PyInstaller という仕組みで作っており、こうしたプログラムでよく起きる誤検知です。各社に誤検知として報告しています。</p>
       </article>
       <article class="safe-card reveal">
         <div class="safe-ico hash" aria-hidden="true">
@@ -473,6 +474,10 @@
         <p>署名なしのアプリのため、初回にWindowsの警告（SmartScreen）が出ます。「詳細情報 → 実行」で起動できます。</p>
         <p>不安なときは、<a href="#safety">VirusTotal の検査結果と SHA-256</a> で、配布しているファイルそのものかを確かめられます。</p>
         <p>ダウンロードフォルダやクラウド同期フォルダ以外への展開をおすすめします。</p>
+      </div></details>
+      <details><summary>ウイルス対策ソフトに引っかかりました</summary><div class="a">
+        <p>署名なしの個人開発アプリや、PyInstaller という仕組みで作ったプログラム（TomoNexus では tomo-backend.exe）は、中身に関係なく「怪しい」と判定されることがあります（誤検知）。<a href="#safety">VirusTotal の検査結果</a>で、多くの会社では問題が見つかっていないことを確かめられます。</p>
+        <p>お使いのウイルス対策ソフトで止められた場合は、そのソフトの「除外」や「許可」に TomoNexus のフォルダを追加してください。判定が気になる方は、お問い合わせください。</p>
       </div></details>
       <details><summary>アンインストールの方法は？</summary><div class="a">
         <p>フォルダを削除してください。データも消す場合は <code>%APPDATA%\Tomo</code> も削除します。</p>

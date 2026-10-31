@@ -436,3 +436,4 @@ code.hash{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:1
 [data-safe-scans]{display:flex;flex-wrap:wrap;gap:6px 16px}
 .safe-sub{font-size:14px;font-weight:700}
 .dl-box .dl-sub{font-weight:600;font-size:13.5px}
+.safe-fp{font-size:13px!important;color:var(--mute)!important;line-height:1.7}

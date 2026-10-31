@@ -409,8 +409,11 @@
           <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8"/></svg>
         </div>
         <h3>VirusTotal で検査済み</h3>
-        <p>配布しているZIPを、多数のウイルス対策ソフトでまとめて検査しました。結果は誰でも同じページで確かめられます。</p>
-        <a class="btn btn-ghost safe-btn" data-safe-vt href="https://www.virustotal.com/" target="_blank" rel="noopener">検査結果を見る ↗</a>
+        <p>配布しているZIPと、中の本体プログラム（.exe）を、多数のウイルス対策ソフトで検査しました。結果は誰でも同じページで確かめられます。</p>
+        <div class="safe-links">
+          <a class="btn btn-ghost safe-btn" data-safe-vt href="https://www.virustotal.com/" target="_blank" rel="noopener">ZIP の検査結果を見る ↗</a>
+          <span data-safe-scans></span>
+        </div>
       </article>
       <article class="safe-card reveal">
         <div class="safe-ico hash" aria-hidden="true">

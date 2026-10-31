@@ -155,8 +155,16 @@ document.querySelectorAll("[data-copy-from]").forEach((b) =>
       box.querySelector("[data-safe-file]").textContent = `${d.file || ""}（v${e.version}${d.size ? "・" + d.size : ""}）`;
       if (d.file) box.querySelector("[data-safe-cmd]").textContent = `Get-FileHash .\\${d.file}`;
       const vt = box.querySelector("[data-safe-vt]");
-      if (/^https:\/\/www\.virustotal\.com\//.test(d.virustotal || "")) vt.href = d.virustotal;
+      const okVT = (u) => /^https:\/\/www\.virustotal\.com\//.test(u || "");
+      if (okVT(d.virustotal)) vt.href = d.virustotal;
       else vt.hidden = true;
+      const wrap = box.querySelector("[data-safe-scans]");
+      if (wrap) (d.scans || []).filter((x) => okVT(x.url)).forEach((x) => {
+        const a = document.createElement("a");
+        a.className = "safe-sub"; a.href = x.url; a.target = "_blank"; a.rel = "noopener";
+        a.textContent = (x.label || "検査結果") + " ↗";
+        wrap.append(a);
+      });
     })
     .catch(() => {
       box.querySelector("[data-safe-sha]").textContent = "更新履歴ページでご確認ください";

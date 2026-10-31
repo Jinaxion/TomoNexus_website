@@ -69,6 +69,11 @@
           a.href = d.virustotal; a.target = "_blank"; a.rel = "noopener";
           box.append(a);
         }
+        (d.scans || []).filter((x) => /^https:\/\/www\.virustotal\.com\//.test(x.url || "")).forEach((x) => {
+          const a = el("a", "dl-sub", (x.label || "検査結果") + " の検査結果 ↗");
+          a.href = x.url; a.target = "_blank"; a.rel = "noopener";
+          box.append(a);
+        });
         card.append(box);
       }
       li.append(card);

@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azure Speech のキーの取り方 — TomoNexus</title>
+<meta name="description" content="TomoNexus で使う Azure Speech のキーを、無料枠で作る手順。クレジットカード登録の注意点、30日後の切り替え、キーのコピーまで画面つきで説明します。">
+<meta name="theme-color" content="#060918">
+<link rel="icon" type="image/png" href="assets/img/icon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Sora:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/img/icon.png" alt=""><span><span class="t">Tomo</span><span class="n">Nexus</span></span></a>
+    <nav class="nav" aria-label="メインメニュー">
+      <a href="./#features">できること</a>
+      <a href="./#movie">動画</a>
+      <a href="./#requirements">必要なもの・料金</a>
+      <a href="shikumi.html">しくみ</a>
+      <a href="obsidian.html">Obsidian連携</a>
+      <a href="history.html">更新履歴</a>
+      <a href="./#faq">よくある質問</a>
+    </nav>
+    <a class="btn btn-primary" data-booth href="./#download"><span data-booth-label>体験版を試す</span></a>
+    <button class="menu-btn" aria-label="メニュー" aria-expanded="false">☰</button>
+  </div>
+</header>
+<main class="guide">
+
+<section class="g-hero">
+  <div>
+    <p class="eyebrow">Azure Speech guide</p>
+    <h1><span class="nb">キャラの「耳」と「声」の</span><span class="nb">キーを、無料枠で作る。</span></h1>
+    <p class="lead">TomoNexus は、あなたの声を聞き取るのと、キャラの声で読み上げるのに Microsoft の <b>Azure Speech</b> を使います。ここでは、そのキーを<b>無料の範囲で</b>作る手順を、画面つきで説明します。</p>
+    <div class="g-pills"><span>目安 15〜20分</span><span>無料枠：聞き取り 月5時間・読み上げ 月50万文字</span><span>クレジットカードの登録が必要</span></div>
+  </div>
+  <figure>
+    <a href="assets/img/azure/05-keys.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/azure/05-keys.webp" alt="完成した Speech リソースの概要画面。キーの表示ボタンとキー1のコピーボタン" width="1514" height="824"></a>
+    <figcaption>ゴールはこの画面：「キー」と「場所」をコピーして TomoNexus に貼るだけ</figcaption>
+  </figure>
+</section>
+
+<section class="az-alert" aria-labelledby="az-first">
+  <p class="eyebrow" style="color:var(--orange)">Read me first</p>
+  <h2 id="az-first"><span class="ic">!</span>はじめる前に、ここだけ読んでください</h2>
+  <div class="az-grid">
+    <div class="az-card">
+      <b>💳 クレジットカードは「本人確認」のため</b>
+      <p>無料で使う場合でも、カードの登録が必要です。<span class="hl">登録しただけで請求されることはありません。</span>確認のために、<b>1ドル相当の一時的な保留</b>がカードの明細に出ることがありますが、あとで取り消されます。</p>
+    </div>
+    <div class="az-card">
+      <b>🎫 プリペイドカードは使えません</b>
+      <p>使えるのはクレジットカードか、<b>プリペイドではない</b>デビットカードです。デビットカードは、種類によって通らないことがあります。</p>
+    </div>
+    <div class="az-card warn">
+      <b>⚠ 価格レベルは必ず「Free F0」</b>
+      <p>Speech を作るときに選ぶ「価格レベル」で <span class="hl red">Standard S0 を選ぶと、使った分だけ料金がかかります。</span>このページの手順どおり <b>Free F0</b> を選べば、無料枠を超えても請求されず、その月はそれ以上使えなくなるだけです。</p>
+    </div>
+    <div class="az-card warn">
+      <b>📅 30日たったら「アップグレード」が必要</b>
+      <p>無料アカウントは、<span class="hl red">30日たつか、200ドル分のクレジットを使い切ると止まります。</span>止まると TomoNexus の聞き取りと声も使えなくなります。続けて使うには「従量課金制」への切り替えが必要です。→ <a href="#az30">くわしくはこちら</a></p>
+    </div>
+  </div>
+  <div class="tip">
+    <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+    <p class="bubble">「従量課金制」って聞くとドキッとするけど、<b>Free F0 のまま使えば料金はかからない</b>よ。お金がかかるのは、有料のサービスを自分で作ったときだけ。この手順なら大丈夫！</p>
+  </div>
+</section>
+
+<nav class="g-toc" aria-label="このページの内容">
+  <a href="#s1">1. 無料アカウントを始める</a><a href="#s2">2. サインイン</a><a href="#s3">3. 本人確認とカード登録</a><a href="#s4">4. 音声を探す</a><a href="#s5">5. Speech を作る</a><a href="#s6">6. 作成を待つ</a><a href="#s7">7. キーを TomoNexus へ</a><a href="#az30">30日後の切り替え</a><a href="#azfaq">よくある質問</a>
+</nav>
+
+<section class="g-step" id="s1">
+  <div class="g-text">
+    <span class="g-num"><b>1</b>STEP</span>
+    <h2>Azure の無料アカウントを始める</h2>
+    <p><a href="https://azure.microsoft.com/ja-jp/free/" target="_blank" rel="noopener">Azure の無料アカウントのページ</a>を開いて、右側の「Azure 無料アカウント」にある <span class="mk">1</span><b>Azure を無料で試す</b> を押します。</p>
+    <p>新しく Azure を使う人だけが対象で、<b>200ドル分のクレジット（30日間）</b>と、ずっと無料のサービスが使えます。TomoNexus で使う Speech の無料枠（Free F0）は、この「ずっと無料」のほうです。</p>
+    <p class="g-note">左側の「従量課金制」から始めても、Free F0 を選べば無料で使えます。迷ったら、まずは右側の無料アカウントがおすすめです（カードに請求されない「使いすぎ防止」が付いています）。</p>
+  </div>
+  <figure class="g-shot narrow" style="max-width:420px">
+    <a href="assets/img/azure/00-start.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/azure/00-start.webp" alt="Azure 無料アカウントの説明と「Azure を無料で試す」ボタン" loading="lazy" width="671" height="743"></a>
+    <figcaption>「Azure を無料で試す」を押す</figcaption>
+  </figure>
+</section>
+
+<section class="g-step flip" id="s2">
+  <div class="g-text">
+    <span class="g-num"><b>2</b>STEP</span>
+    <h2>Microsoft アカウントでサインイン</h2>
+    <ul>
+      <li><span class="mk">1</span>Microsoft アカウント（Outlook・Hotmail・Xbox などで使っているもの）を<b>持っている人</b>は、メールアドレスを入れて「次へ」</li>
+      <li><span class="mk">2</span><b>持っていない人</b>は「作成」から、メールアドレスとパスワードを決めて作ります</li>
+    </ul>
+    <p>GitHub のアカウントでもサインインできます。</p>
+    <div class="tip">
+      <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+      <p class="bubble">ここで使ったメールに、Azure からの大事なお知らせ（30日後の案内とか）が届くよ。<b>ふだん見るメール</b>にしておこうね。</p>
+    </div>
+  </div>
+  <figure class="g-shot narrow">
+    <a href="assets/img/azure/01-signin.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/azure/01-signin.webp" alt="Microsoft のサインイン画面。メールアドレスの欄と、アカウントの作成リンク" loading="lazy" width="455" height="470"></a>
+    <figcaption>サインイン画面</figcaption>
+  </figure>
+</section>
+
+<section class="g-step" id="s3">
+  <div class="g-text">
+    <span class="g-num"><b>3</b>STEP</span>
+    <h2>プロフィールを入れて、電話とカードで本人確認</h2>
+    <p>サインインすると、Azure の申し込み画面になります。上から順に入れていきます。</p>
+    <ol class="az-steps">
+      <li><b>プロフィール</b>：国/地域は「日本」。名前（とフリガナ）・メールアドレス・電話番号・住所を入れます</li>
+      <li><b>電話で本人確認</b>：「テキスト メッセージ（SMS）」か「電話」を選んで <b>コードを送信</b>。届いた数字を入れて「コードの確認」</li>
+      <li><b>カードで本人確認</b>：カード番号・有効期限・名義・セキュリティコード（CVV）と、請求先住所を入れます</li>
+      <li><b>同意してサインアップ</b>：「契約とプランの詳細に同意します」にチェックして「サインアップ」。おすすめ情報のメールは、チェックしなくて大丈夫です</li>
+    </ol>
+    <div class="tip warn">
+      <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+      <p class="bubble">カードを入れても<b>今すぐ請求されるわけじゃない</b>から安心してね。明細に「1ドルくらい」の保留が出ることがあるけど、本人確認用で、あとで消えるよ。</p>
+    </div>
+    <div class="tip">
+      <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+      <p class="bubble">カードが通らないときは、<b>名前と住所をカード会社に登録してあるのと同じ</b>にしてみて。プリペイドカードは使えないよ。</p>
+    </div>
+    <p class="g-note">ここにある図は、流れを説明するための<b>イメージ</b>です。実際の画面の文言や並びは、時期によって変わることがあります。</p>
+  </div>
+  <div>
+    <div class="mock" role="img" aria-label="プロフィール入力のイメージ図">
+      <span class="mtag">イメージ</span>
+      <div class="mt">① プロフィール</div>
+      <div class="f"><label>国/地域</label><div class="in">日本</div></div>
+      <div class="row2"><div class="f"><label>姓</label><div class="in">山田</div></div><div class="f"><label>名</label><div class="in">花子</div></div></div>
+      <div class="f"><label>電子メール アドレス</label><div class="in">hanako@example.com</div></div>
+      <div class="f"><label>電話</label><div class="in">+81 90-0000-0000</div></div>
+      <div class="f"><label>郵便番号・住所</label><div class="in">〒000-0000 東京都…</div></div>
+    </div>
+    <div class="mock" role="img" aria-label="電話による本人確認のイメージ図">
+      <span class="mtag">イメージ</span>
+      <div class="mt">② 電話による本人確認</div>
+      <div class="opt"><span class="on">テキスト メッセージ</span><span>電話</span></div>
+      <span class="btnm">コードを送信</span>
+      <div class="f hit" style="margin-top:12px"><label>確認コード（SMSで届いた数字）</label><div class="in">123456</div></div>
+      <span class="btnm">コードの確認</span>
+    </div>
+    <div class="mock" role="img" aria-label="カードによる本人確認のイメージ図">
+      <span class="mtag">イメージ</span>
+      <div class="mt">③ カードによる本人確認</div>
+      <div class="f red"><label>カード番号</label><div class="in">•••• •••• •••• ••••</div></div>
+      <div class="row2"><div class="f"><label>有効期限</label><div class="in">MM / YY</div></div><div class="f"><label>CVV</label><div class="in">•••</div></div></div>
+      <div class="f"><label>カード名義</label><div class="in">HANAKO YAMADA</div></div>
+      <p class="note">※ 本人確認のためで、サインアップしただけでは請求されません</p>
+    </div>
+    <div class="mock" role="img" aria-label="同意とサインアップのイメージ図">
+      <span class="mtag">イメージ</span>
+      <div class="mt">④ 同意してサインアップ</div>
+      <div class="chk"><i class="on"></i><span>契約とプランの詳細に同意します</span></div>
+      <div class="chk"><i></i><span>おすすめ情報のメールを受け取る（任意）</span></div>
+      <span class="btnm">サインアップ</span>
+    </div>
+  </div>
+</section>
+
+<section class="g-step flip" id="s4">
+  <div class="g-text">
+    <span class="g-num"><b>4</b>STEP</span>
+    <h2>Azure ポータルで「音声」を探す</h2>
+    <p>申し込みが終わると、管理画面の <a href="https://portal.azure.com/" target="_blank" rel="noopener">Azure ポータル</a> が開きます。左上の「＋ リソースの作成」を押して、Marketplace を開きます。</p>
+    <ul>
+      <li><span class="mk">1</span>検索欄に <code>speech</code> と入れる</li>
+      <li><span class="mk">2</span>「<b>音声</b>」（Microsoft・Azure Service）の <b>作成</b> を押す</li>
+    </ul>
+    <p class="g-note">「Azure AI サービス」など、似た名前のものもあります。選ぶのは、マイクと吹き出しのアイコンの「<b>音声</b>」です。</p>
+  </div>
+  <figure class="g-shot">
+    <a href="assets/img/azure/02-market.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/azure/02-market.webp" alt="Marketplace で speech を検索し、音声の作成ボタンを押すところ" loading="lazy" width="883" height="637"></a>
+    <figcaption>Marketplace で「音声」を選ぶ</figcaption>
+  </figure>
+</section>
+
+<section class="g-step" id="s5">
+  <div class="g-text">
+    <span class="g-num"><b>5</b>STEP</span>
+    <h2>Speech Services を作る</h2>
+    <p>「Basics」タブで、次のように入れます。サブスクリプションは、そのまま（Azure subscription 1 など）で大丈夫です。</p>
+    <ul>
+      <li><span class="mk">1</span><b>リソース グループ</b>：「新規作成」を押して、好きな名前に（例：<code>tomo-rg</code>）。入れ物の名前なので、なんでもOK</li>
+      <li><span class="mk">2</span><b>リージョン</b>：<code>(Asia Pacific) Japan East</code>（東日本）がおすすめ</li>
+      <li><span class="mk">3</span><b>名前</b>：好きな名前に（例：<code>tomo-speech</code>）。ほかの人と同じ名前は使えないので、赤くなったら数字などを足してください</li>
+      <li><span class="mk red">4</span><b>価格レベル</b>：<span class="hl red">必ず「Free F0」</span></li>
+      <li><span class="mk">5</span>「<b>確認と作成</b>」を押す</li>
+    </ul>
+    <div class="tip warn">
+      <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+      <p class="bubble">いちばん大事なのは <span class="mk red">4</span>！ <b>「Standard S0」になってたら、絶対に Free F0 に変えてね。</b>S0 は使った分だけお金がかかっちゃうよ。</p>
+    </div>
+    <p class="g-note">Free F0 が選べないときは、同じサブスクリプションに Free F0 の音声リソースがもう1つあるのかもしれません（Free F0 は1つまで）。前に作ったものを使うか、削除してから作り直してください。</p>
+  </div>
+  <figure class="g-shot narrow" style="max-width:460px">
+    <a href="assets/img/azure/03-create.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/azure/03-create.webp" alt="Speech Services の作成画面。リソースグループ、リージョン Japan East、名前、価格レベル Free F0、確認と作成ボタン" loading="lazy" width="735" height="874"></a>
+    <figcaption>「Speech Services の作成」Basics タブ</figcaption>
+  </figure>
+</section>
+
+<section class="g-step flip" id="s6">
+  <div class="g-text">
+    <span class="g-num"><b>6</b>STEP</span>
+    <h2>確認して作成、できあがるのを待つ</h2>
+    <ol class="az-steps">
+      <li>「確認と作成」の画面で、<b>価格レベルが Free F0</b> になっているかもう一度見る</li>
+      <li>下の「<b>作成</b>」を押す</li>
+      <li>「デプロイが進行中です」→「<b>デプロイが完了しました</b>」になるまで、1〜2分待つ</li>
+      <li>「<b>リソースに移動</b>」を押す</li>
+    </ol>
+    <p class="g-note">ネットワーク・Identity・タグのタブは、変えなくて大丈夫です。</p>
+  </div>
+  <div class="mock" role="img" aria-label="デプロイ完了画面のイメージ図" style="align-self:center">
+    <span class="mtag">イメージ</span>
+    <div class="mt">✅ デプロイが完了しました</div>
+    <p style="font-size:13px;color:#444;margin-bottom:10px">デプロイ名：Microsoft.CognitiveServicesSpeechServices…<br>リソース グループ：tomo-rg</p>
+    <span class="btnm" style="outline:3px solid #ff8a28;outline-offset:3px">リソースに移動</span>
+  </div>
+</section>
+
+<section class="g-step" id="s7">
+  <div class="g-text">
+    <span class="g-num"><b>7</b>STEP</span>
+    <h2>キーと場所をコピーして、TomoNexus に貼る</h2>
+    <p>作った Speech の「概要」画面の下のほうに「キーとエンドポイント」があります。</p>
+    <ul>
+      <li><span class="mk">1</span>「<b>キーの表示</b>」を押す</li>
+      <li><span class="mk">2</span>「キー 1」の右のボタンで<b>コピー</b></li>
+      <li><span class="mk">3</span><b>場所</b>（リージョン）を確認。Japan East なら <code>japaneast</code></li>
+      <li><span class="mk">4</span><b>価格レベルが「Free」</b>になっていればOK</li>
+    </ul>
+    <p>TomoNexus のセットアップ画面（または設定画面）の <b>Azure Speech</b> の欄に、コピーしたキーとリージョンを貼り付ければ完了です。</p>
+    <div class="tip warn">
+      <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+      <p class="bubble">キーは<b>家のカギと同じ</b>。SNS に貼ったり、スクショで見せたりしないでね。もし見られちゃったら、同じ画面の「キーの再生成」で新しいキーに変えれば大丈夫だよ。</p>
+    </div>
+  </div>
+  <figure class="g-shot">
+    <a href="assets/img/azure/05-keys.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/azure/05-keys.webp" alt="Speech リソースの概要画面。キーの表示、キー1のコピー、場所 Japan East、価格レベル Free" loading="lazy" width="1514" height="824"></a>
+    <figcaption>リソースの「概要」→ キーとエンドポイント</figcaption>
+  </figure>
+</section>
+
+<section class="az-30" id="az30">
+  <p class="eyebrow" style="color:#ff9aa8">After 30 days</p>
+  <h2>30日後に「アップグレード」して、使い続ける</h2>
+  <p>無料アカウントは、<b>始めてから30日たつか、200ドル分のクレジットを使い切ると止まります</b>（使いすぎ防止のしくみです）。止まると、TomoNexus の聞き取りとキャラの声も使えなくなります。その前に、Azure からメールやポータルの画面でお知らせが来ます。</p>
+  <ol>
+    <li>Azure ポータルの上に出るお知らせ、または検索欄で「サブスクリプション」を開く</li>
+    <li>使っているサブスクリプションを選んで「<b>アップグレード</b>」（従量課金制への切り替え）</li>
+    <li>切り替えたあとも、<b>Free F0 の Speech はそのまま無料</b>で使えます</li>
+  </ol>
+  <div class="az-grid" style="margin-top:14px">
+    <div class="az-card warn">
+      <b>切り替えたら「使いすぎ防止」はなくなります</b>
+      <p>有料のサービスを作ったり、Speech を Standard S0 に変えたりすると、その分は請求されます。TomoNexus だけに使うなら、<b>Free F0 の音声リソース1つだけ</b>にしておけば安心です。</p>
+    </div>
+    <div class="az-card">
+      <b>心配なら「予算のお知らせ」を設定</b>
+      <p>ポータルの「コストの管理と請求」→「予算」で、たとえば <b>100円</b> の予算を作ってメール通知をオンにしておくと、万一お金がかかりはじめたときにすぐ気づけます。</p>
+    </div>
+  </div>
+  <div class="tip">
+    <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+    <p class="bubble">切り替えないで放っておくと、ただ止まるだけで<b>勝手に請求されることはない</b>よ。続けて使いたくなったら切り替えればOK！</p>
+  </div>
+</section>
+
+<section id="azfaq" style="margin-top:56px">
+  <p class="eyebrow">FAQ</p>
+  <h2 class="h2" style="font-size:clamp(24px,3.4vw,32px);margin:8px 0 20px">よくある質問</h2>
+  <div class="faq">
+    <details><summary>本当に無料で使えますか？</summary><div class="a">
+      <p>価格レベルを <b>Free F0</b> にしていれば、聞き取りは月5時間、読み上げは月50万文字まで無料です。超えても請求はされず、その月はそれ以上使えなくなります（翌月にまた使えるようになります）。</p>
+      <p>聞き取りの5時間を超えそうな月は、聞き取りの予備として Groq のキー（無料）を入れておくのがおすすめです。</p>
+    </div></details>
+    <details><summary>カードの明細に、知らない請求が出ています</summary><div class="a">
+      <p>申し込みのときの本人確認で、1ドル相当の一時的な保留が出ることがあります。これはあとで取り消されます。保留ではない請求が続く場合は、Azure ポータルの「コストの管理と請求」で、有料のリソースがないか確認してください。</p>
+    </div></details>
+    <details><summary>カードが通りません</summary><div class="a">
+      <p>プリペイドカードは使えません。デビットカードは、種類によって通らないことがあります。名前と住所を、カード会社に登録しているのと同じにして、もう一度試してください。</p>
+    </div></details>
+    <details><summary>SMS のコードが届きません</summary><div class="a">
+      <p>電話番号の国番号が「+81（日本）」になっているか確認してください。届かないときは、確認の方法を「電話」に変えると、音声でコードを教えてもらえます。</p>
+    </div></details>
+    <details><summary>価格レベルで Free F0 が選べません</summary><div class="a">
+      <p>Free F0 の音声リソースは、1つのサブスクリプションに1つまでです。前に作ったものがあれば、そのキーを使ってください。</p>
+    </div></details>
+    <details><summary>キーを人に見られてしまいました</summary><div class="a">
+      <p>Speech の「キーとエンドポイント」で <b>キーの再生成</b> をすると、古いキーは使えなくなります。新しいキーを TomoNexus に貼り直してください。</p>
+    </div></details>
+  </div>
+  <p style="margin-top:20px;color:var(--mute);font-size:13px">※ Azure の画面・料金・無料枠は Microsoft の都合で変わることがあります。最新の情報は <a href="https://azure.microsoft.com/ja-jp/pricing/details/speech/" target="_blank" rel="noopener">Speech の料金</a>・<a href="https://azure.microsoft.com/ja-jp/free/free-account-faq/" target="_blank" rel="noopener">無料アカウントのよくある質問</a>（Microsoft）でご確認ください。このページは TomoNexus が作った説明で、Microsoft とは関係ありません。</p>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-links"><a href="./">トップ</a><a href="shikumi.html">しくみ</a><a href="obsidian.html">Obsidian連携</a><a href="azure.html">Azureキーの取り方</a><a href="https://jinaxion.booth.pm/items/9001516" target="_blank" rel="noopener">BOOTH</a><a href="history.html">更新履歴</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a></div>
+    <p>© <span data-year>2026</span> TomoNexus</p>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

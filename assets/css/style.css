@@ -437,3 +437,55 @@ code.hash{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:1
 .safe-sub{font-size:14px;font-weight:700}
 .dl-box .dl-sub{font-weight:600;font-size:13.5px}
 .safe-fp{font-size:13px!important;color:var(--mute)!important;line-height:1.7}
+
+/* ---------- Azure 手順ガイド ---------- */
+.az-alert{margin:0 0 48px;border:2px solid rgba(255,162,77,.55);border-radius:24px;padding:26px 26px 22px;background:radial-gradient(120% 140% at 0% 0%,rgba(255,162,77,.16),transparent 60%),rgba(255,255,255,.03)}
+.az-alert h2{font-weight:900;font-size:clamp(20px,2.6vw,26px);margin:6px 0 14px;display:flex;align-items:center;gap:10px}
+.az-alert h2 .ic{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--orange);color:#1a0f00;font-family:var(--en);font-weight:800}
+.az-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:700px){.az-grid{grid-template-columns:minmax(0,1fr)}}
+.az-card{background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.az-card > b{display:block;font-size:16px;margin-bottom:4px}
+.az-card p{color:var(--soft);font-size:14.5px;line-height:1.75}
+.az-card.warn{border-color:rgba(255,92,112,.6);background:rgba(255,72,96,.08)}
+.az-card.warn b{color:#ff9aa8}
+.mk{display:inline-grid;place-items:center;min-width:24px;height:24px;padding:0 6px;border-radius:999px;background:#ff8a28;color:#fff;font-family:var(--en);font-weight:800;font-size:13px;line-height:1;vertical-align:2px;margin-right:4px;border:2px solid #fff}
+.mk.red{background:#eb3448}
+.hl{background:linear-gradient(transparent 58%,rgba(255,162,77,.45) 58%);color:#fff;font-weight:900}
+.hl.red{background:linear-gradient(transparent 58%,rgba(255,72,96,.5) 58%)}
+.tip{display:flex;gap:12px;align-items:flex-start;margin-top:16px}
+.tip img{flex:none;width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:50% 8%;border:2px solid var(--cyan);background:#0c1330}
+.tip .bubble{position:relative;background:#f4f7ff;color:#1b2140;border-radius:16px;padding:12px 16px;font-size:14.5px;line-height:1.75;font-weight:700}
+.tip .bubble::before{content:"";position:absolute;left:-8px;top:18px;border:8px solid transparent;border-left:0;border-right-color:#f4f7ff}
+.tip .bubble b{color:#d2560a}
+.tip.warn img{border-color:#ff6b80}
+.tip.warn .bubble{background:#fff1f3}
+.tip.warn .bubble::before{border-right-color:#fff1f3}
+.tip.warn .bubble b{color:#d01f3c}
+/* 画面のイメージ図（実際の画面ではありません） */
+.mock{background:#fff;color:#1b1b1b;border-radius:16px;border:1px solid var(--line);box-shadow:0 24px 60px rgba(0,0,0,.45);padding:20px 22px 18px;font-size:14px;position:relative}
+.mock + .mock{margin-top:16px}
+.mock .mt{font-weight:900;font-size:17px;margin-bottom:12px;color:#111}
+.mock .mtag{position:absolute;top:12px;right:12px;font-size:11.5px;font-weight:700;color:#666;border:1px solid #ccc;border-radius:999px;padding:1px 9px}
+.mock .f{margin-bottom:9px}
+.mock .f label{display:block;font-size:12.5px;color:#444;margin-bottom:3px}
+.mock .f .in{border:1px solid #8a8a8a;border-radius:4px;height:30px;padding:4px 9px;color:#777;font-size:13px;background:#fff}
+.mock .f.hit .in{outline:3px solid #ff8a28;outline-offset:2px}
+.mock .f.red .in{outline:3px solid #eb3448;outline-offset:2px}
+.mock .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mock .btnm{display:inline-block;background:#0f6cbd;color:#fff;font-weight:700;border-radius:4px;padding:6px 16px;font-size:13px;margin-top:4px}
+.mock .chk{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#333;margin:6px 0}
+.mock .chk i{flex:none;width:16px;height:16px;border:1.5px solid #555;border-radius:3px;margin-top:3px}
+.mock .chk i.on{background:#0f6cbd;border-color:#0f6cbd}
+.mock .opt{display:flex;gap:14px;font-size:13px;color:#333;margin:4px 0 8px}
+.mock .opt span::before{content:"";display:inline-block;width:12px;height:12px;border:1.5px solid #555;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.mock .opt span.on::before{background:radial-gradient(#0f6cbd 45%,#fff 50%)}
+.mock .mk{position:absolute;left:-12px}
+.mock .note{font-size:12px;color:#666;margin-top:8px}
+.az-steps{counter-reset:s;list-style:none;padding-left:0 !important}
+.az-steps > li{position:relative;padding-left:34px !important}
+.az-steps > li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:3px;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(169,139,255,.25);color:#fff;font-family:var(--en);font-weight:800;font-size:13px}
+.az-30{margin-top:20px;border:2px solid rgba(255,92,112,.55);border-radius:24px;padding:28px;background:radial-gradient(120% 120% at 100% 0%,rgba(255,72,96,.13),transparent 60%),rgba(255,255,255,.03)}
+.az-30 h2{font-weight:900;font-size:clamp(22px,2.8vw,28px);margin:10px 0 12px}
+.az-30 p,.az-30 li{color:#dfe4f4;font-size:15.5px;line-height:1.85}
+.az-30 ol,.az-30 ul{padding-left:1.3em;margin:10px 0;display:flex;flex-direction:column;gap:6px}

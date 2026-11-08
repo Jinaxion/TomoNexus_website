@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude の APIキーの取り方 — TomoNexus</title>
+<meta name="description" content="TomoNexus で使う Claude（Anthropic）の APIキーを作る手順。クレジットの購入、有効期限の選び方、キーのコピーまで画面つきで説明します。">
+<meta name="theme-color" content="#060918">
+<link rel="icon" type="image/png" href="assets/img/icon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Sora:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/img/icon.png" alt=""><span><span class="t">Tomo</span><span class="n">Nexus</span></span></a>
+    <nav class="nav" aria-label="メインメニュー">
+      <a href="./#features">できること</a>
+      <a href="./#movie">動画</a>
+      <a href="./#requirements">必要なもの・料金</a>
+      <a href="shikumi.html">しくみ</a>
+      <a href="obsidian.html">Obsidian連携</a>
+      <a href="history.html">更新履歴</a>
+      <a href="./#faq">よくある質問</a>
+    </nav>
+    <a class="btn btn-primary" data-booth href="./#download"><span data-booth-label>体験版を試す</span></a>
+    <button class="menu-btn" aria-label="メニュー" aria-expanded="false">☰</button>
+  </div>
+</header>
+<main class="guide">
+
+<section class="g-hero">
+  <div>
+    <nav class="key-tabs" aria-label="キーの取り方"><span>キーの取り方：</span><a href="claude.html" aria-current="page">Claude（AI）</a><a href="azure.html">Azure Speech（音声）</a><a href="groq.html">Groq（任意）</a></nav>
+    <p class="eyebrow">Claude API guide</p>
+    <h1><span class="nb">キャラの「頭脳」の</span><span class="nb">APIキーを作る。</span></h1>
+    <p class="lead">TomoNexus のキャラが考えて話したり、メモにまとめたりするのは、Anthropic の AI <b>Claude</b> です。ここでは、Claude の <b>APIキー</b> を作って TomoNexus に入れるまでを、画面つきで説明します。</p>
+    <div class="g-pills"><span>目安 10分</span><span>前払い（$5〜）</span><span>おすすめ設定で月200円くらい</span></div>
+  </div>
+  <figure>
+    <a href="assets/img/claude/04-create.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/claude/04-create.webp" alt="Claude Console の「API キーを作成」画面" width="511" height="452" style="max-width:420px;margin:0 auto"></a>
+    <figcaption>Claude Console の「API キーを作成」</figcaption>
+  </figure>
+</section>
+
+<div class="az-route">
+  <div class="on">
+    <small>このページ</small>
+    <h3>① APIキーで使う（おすすめ）</h3>
+    <p>使った分だけ払う方式。キーを1つ貼るだけで使えて、送った内容が AI の学習に使われません。アプリ内で「月の上限金額」も決められます。</p>
+  </div>
+  <div>
+    <small>APIキーは不要</small>
+    <h3>② Claude Pro / Max / Team で使う</h3>
+    <p>すでに契約している方は、追加料金なしで使えます。APIキーの代わりに <b>Claude Code</b> を PC に入れて、ログインしておいてください。→ <a href="https://code.claude.com/docs/ja/setup" target="_blank" rel="noopener">Claude Code のインストール（公式）</a></p>
+  </div>
+</div>
+
+<section class="az-alert" aria-labelledby="cl-first">
+  <p class="eyebrow" style="color:var(--orange)">Read me first</p>
+  <h2 id="cl-first"><span class="ic">!</span>はじめる前に、ここだけ読んでください</h2>
+  <div class="az-grid">
+    <div class="az-card">
+      <b>💳 「先にチャージ」する前払い式</b>
+      <p>Claude の API は、<span class="hl">先にクレジット（残高）を買って、使った分だけ減っていく</span>しくみです。残高が 0 になると止まるだけで、勝手に請求は増えません。最初は <b>$5（約800円）</b>で十分です。</p>
+    </div>
+    <div class="az-card">
+      <b>🧾 消費税がかかり、返金はできません</b>
+      <p>購入時に<b>消費税（10%）</b>が上乗せされます。買ったクレジットは<b>返金できず、1年で期限切れ</b>になるので、少しずつ買うのがおすすめです。</p>
+    </div>
+    <div class="az-card warn">
+      <b>⚠ 「自動チャージ」は最初はオフで</b>
+      <p>残高が減ると自動で買い足す「自動チャージ（auto-reload）」があります。<span class="hl red">オンにすると、そのたびにカードに請求されます。</span>慣れるまではオフのままにしておきましょう（最初はオフです）。</p>
+    </div>
+    <div class="az-card warn">
+      <b>📅 キーの「有効期限」に注意</b>
+      <p>キーを作るときに有効期限を選びます。<span class="hl red">期限が来ると、TomoNexus が急に話せなくなります。</span>期限を延ばすことはできないので、迷ったら「なし（無期限）」がおすすめです。→ <a href="#s5">くわしくはこちら</a></p>
+    </div>
+  </div>
+  <div class="tip">
+    <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+    <p class="bubble">「前払い」だから、<b>チャージした分以上は使われない</b>よ。$5 チャージして、どれくらい減るか見てから足していけば安心だね！</p>
+  </div>
+</section>
+
+<nav class="g-toc" aria-label="このページの内容">
+  <a href="#s1">1. Console を開く</a><a href="#s2">2. サインイン</a><a href="#s3">3. クレジットを買う</a><a href="#s4">4. キーを作り始める</a><a href="#s5">5. 名前と有効期限</a><a href="#s6">6. キーをコピー</a><a href="#s7">7. TomoNexus に貼る</a><a href="#clfaq">よくある質問</a>
+</nav>
+
+<section class="g-step" id="s1">
+  <div class="g-text">
+    <span class="g-num"><b>1</b>STEP</span>
+    <h2>Claude Console を開く</h2>
+    <p>APIキーは、開発者向けの管理画面 <a href="https://platform.claude.com/" target="_blank" rel="noopener">Claude Console</a>（platform.claude.com）で作ります。ふだん claude.ai を使っている方は、左下のアカウントのメニューにある <span class="mk">1</span><b>API キーを取得</b> からも開けます。</p>
+    <p class="g-note">claude.ai（チャット）と Claude Console（API）は、料金が別々です。Claude Pro などを契約していても、API のクレジットは別に買う必要があります。</p>
+  </div>
+  <figure class="g-shot narrow" style="max-width:300px">
+    <a href="assets/img/claude/00-menu.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/claude/00-menu.webp" alt="claude.ai のアカウントメニュー。API キーを取得の項目" loading="lazy" width="275" height="309"></a>
+    <figcaption>claude.ai のアカウントメニュー</figcaption>
+  </figure>
+</section>
+
+<section class="g-step flip" id="s2">
+  <div class="g-text">
+    <span class="g-num"><b>2</b>STEP</span>
+    <h2>サインイン（またはアカウントを作る）</h2>
+    <ul>
+      <li><span class="mk">1</span><b>Google で続ける</b>：Google アカウントでそのまま入れます</li>
+      <li><span class="mk">2</span><b>メールで続ける</b>：メールアドレスを入れると、ログイン用のリンクが届きます</li>
+    </ul>
+    <p>はじめての方は、そのままアカウントが作られます。名前などいくつか質問が出たら、答えて進んでください。</p>
+    <div class="tip">
+      <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+      <p class="bubble">claude.ai と<b>同じメール</b>で入ると、メニューから行き来しやすいよ。</p>
+    </div>
+  </div>
+  <figure class="g-shot narrow">
+    <a href="assets/img/claude/01-login.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/claude/01-login.webp" alt="Claude Platform のサインイン画面。Google で続ける、メールで続ける" loading="lazy" width="443" height="466"></a>
+    <figcaption>Claude Platform のサインイン</figcaption>
+  </figure>
+</section>
+
+<section class="g-step" id="s3">
+  <div class="g-text">
+    <span class="g-num"><b>3</b>STEP</span>
+    <h2>クレジットを買う（前払い）</h2>
+    <p>Console の <a href="https://platform.claude.com/settings/billing" target="_blank" rel="noopener">請求（Billing）</a> のページを開いて、「<b>Purchase credits</b>（クレジットを購入）」を押します。</p>
+    <ol class="az-steps">
+      <li><b>金額を選ぶ</b>：$5・$20・$100・その他から。最初は <b>$5</b> で十分です</li>
+      <li><b>請求先住所</b>を入れる（都道府県が空だと、購入ボタンが押せません）</li>
+      <li><b>カード情報</b>を入れる。「事業者の税番号」は個人なら空欄でOK</li>
+      <li>金額・<b>消費税</b>・合計を確認して「<b>購入</b>」</li>
+    </ol>
+    <p>買ったクレジットはすぐに使えます。画面の右上に残高が表示されます。</p>
+    <div class="tip warn">
+      <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+      <p class="bubble">購入のあとに出る「<b>自動チャージ（auto-reload）</b>」の設定は、<b>オンにしなくて大丈夫</b>。残高が少なくなったら、自分で買い足せばいいよ。</p>
+    </div>
+    <p class="g-note">右の図は流れを説明するための<b>イメージ</b>です。実際の画面の文言や並びは、時期によって変わることがあります。</p>
+  </div>
+  <div>
+    <div class="mock" role="img" aria-label="クレジット購入画面のイメージ図">
+      <span class="mtag">イメージ</span>
+      <div class="mt">Purchase credits</div>
+      <div class="opt" style="gap:8px;flex-wrap:wrap">
+        <span class="btnm" style="background:#fff;color:#111;border:3px solid #ff8a28;margin:0">$5</span>
+        <span class="btnm" style="background:#fff;color:#111;border:1px solid #bbb;margin:0">$20</span>
+        <span class="btnm" style="background:#fff;color:#111;border:1px solid #bbb;margin:0">$100</span>
+        <span class="btnm" style="background:#fff;color:#111;border:1px solid #bbb;margin:0">Other</span>
+      </div>
+      <div class="f" style="margin-top:12px"><label>Billing address（請求先住所）</label><div class="in">〒000-0000 東京都…</div></div>
+      <div class="f red"><label>Card（カード番号・有効期限・CVC）</label><div class="in">•••• •••• •••• ••••　MM/YY　•••</div></div>
+      <div style="border-top:1px solid #ddd;margin-top:10px;padding-top:8px;font-size:13px;color:#333;display:grid;grid-template-columns:1fr auto;gap:2px 12px">
+        <span>Credits</span><span>$5.00</span>
+        <span>Estimated tax（消費税）</span><span>$0.50</span>
+        <b style="color:#111">Total</b><b style="color:#111">$5.50</b>
+      </div>
+      <span class="btnm" style="margin-top:10px">Purchase $5 of credits</span>
+    </div>
+    <div class="mock" role="img" aria-label="自動チャージ設定のイメージ図">
+      <span class="mtag">イメージ</span>
+      <div class="mt">Auto-reload（自動チャージ）</div>
+      <div class="chk"><i></i><span>残高が減ったら自動で買い足す<br><small style="color:#c0233a;font-weight:700">→ 最初はオフのままでOK</small></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="g-step flip stack" id="s4">
+  <div class="g-text">
+    <span class="g-num"><b>4</b>STEP</span>
+    <h2>APIキーを作り始める</h2>
+    <p>Console の <a href="https://platform.claude.com/settings/keys" target="_blank" rel="noopener">API キー</a> のページを開いて、右上の <span class="mk">1</span><b>＋ キーを作成</b> を押します。</p>
+    <p>「ID 連携を使用すれば、API キーは不要です」という案内が出たら、いちばん下の <b>API キーで続ける</b> を押してください（ID 連携は、会社のサーバー向けのしくみです）。</p>
+    <figure class="g-shot narrow" style="margin-top:14px;max-width:420px">
+      <a href="assets/img/claude/03-dialog.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/claude/03-dialog.webp" alt="ID 連携の案内。いちばん下の API キーで続けるを押す" loading="lazy" width="504" height="388"></a>
+      <figcaption>この案内が出たら「API キーで続ける」</figcaption>
+    </figure>
+  </div>
+  <figure class="g-shot">
+    <a href="assets/img/claude/02-keys.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/claude/02-keys.webp" alt="Claude Console の API キーの一覧。右上にキーを作成ボタン" loading="lazy" width="1279" height="366"></a>
+    <figcaption>API キーの一覧（右上の「キーを作成」）</figcaption>
+  </figure>
+</section>
+
+<section class="g-step" id="s5">
+  <div class="g-text">
+    <span class="g-num"><b>5</b>STEP</span>
+    <h2>名前と有効期限を決めて作成</h2>
+    <ul>
+      <li><span class="mk">1</span><b>名前</b>：自分でわかる名前に（例：<code>TomoNexus</code>）</li>
+      <li><span class="mk red">2</span><b>有効期限</b>：<span class="hl red">迷ったら「なし（無期限）」</span>。30日などを選ぶと、その日に TomoNexus が話せなくなります</li>
+      <li><b>リンクされたアカウント</b>・<b>スコープ</b>：そのまま（自分・デフォルトワークスペース）でOK</li>
+      <li><span class="mk">3</span>「<b>キーを作成</b>」を押す</li>
+    </ul>
+    <div class="tip warn">
+      <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+      <p class="bubble">有効期限は<b>あとから延ばせない</b>の！期限つきにしたときは、切れる前にメールが届くから、新しいキーを作って TomoNexus に貼り直してね。</p>
+    </div>
+    <p class="g-note">TomoNexus はキーを Windows の資格情報マネージャーに保存し、設定ファイルやログには書き出しません。それでも心配な方は、期限つき（たとえば30日）にして、こまめに作り直すこともできます。</p>
+  </div>
+  <figure class="g-shot narrow" style="max-width:440px">
+    <a href="assets/img/claude/04-create.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/claude/04-create.webp" alt="API キーを作成の画面。名前、有効期限、リンクされたアカウント、スコープ、キーを作成ボタン" loading="lazy" width="511" height="452"></a>
+    <figcaption>「API キーを作成」</figcaption>
+  </figure>
+</section>
+
+<section class="g-step flip" id="s6">
+  <div class="g-text">
+    <span class="g-num"><b>6</b>STEP</span>
+    <h2>キーをコピーする（表示は1回だけ）</h2>
+    <p>作ったキー（<code>sk-ant-</code> で始まる長い文字）が表示されます。<span class="mk">1</span><b>キーをコピー</b> を押して、すぐに TomoNexus に貼りましょう。</p>
+    <div class="tip warn">
+      <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+      <p class="bubble">この画面を閉じると、<b>もう二度とキーは見られない</b>よ！コピーしそびれたら、キーを作り直せば大丈夫。前のキーは一覧から削除しておこうね。</p>
+    </div>
+  </div>
+  <figure class="g-shot narrow" style="max-width:460px">
+    <a href="assets/img/claude/05-copy.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/claude/05-copy.webp" alt="API キーを保存の画面。キーをコピーボタン（キーの文字は隠しています）" loading="lazy" width="514" height="256"></a>
+    <figcaption>「API キーを保存」（キーの文字は隠しています）</figcaption>
+  </figure>
+</section>
+
+<section class="g-step" id="s7">
+  <div class="g-text">
+    <span class="g-num"><b>7</b>STEP</span>
+    <h2>TomoNexus に貼って完了</h2>
+    <p>TomoNexus のセットアップ画面（または設定画面）で、AI を「<b>APIキー</b>」にして、コピーしたキーを貼り付ければ完了です。</p>
+    <ul>
+      <li>アプリ内で「<b>月の上限金額</b>」を決めておくと、使いすぎを防げます</li>
+      <li>使った金額は、Console の右上の残高や、キーの一覧の「コスト」で確認できます</li>
+    </ul>
+    <div class="tip warn">
+      <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+      <p class="bubble">キーは<b>お財布のカギ</b>みたいなもの。人に見せたり、SNS に貼ったりしないでね。見られちゃったら、一覧の「…」からすぐ削除して作り直そう！</p>
+    </div>
+  </div>
+  <div class="mock" role="img" aria-label="TomoNexus にキーを貼るイメージ図" style="align-self:center">
+    <span class="mtag">イメージ</span>
+    <div class="mt">AI の設定</div>
+    <div class="opt"><span class="on">APIキー</span><span>Claude Pro / Max など</span></div>
+    <div class="f hit"><label>Anthropic の APIキー</label><div class="in">sk-ant-••••••••••••••••</div></div>
+    <div class="f"><label>月の上限金額</label><div class="in">500 円</div></div>
+  </div>
+</section>
+
+<section id="clfaq" style="margin-top:56px">
+  <p class="eyebrow">FAQ</p>
+  <h2 class="h2" style="font-size:clamp(24px,3.4vw,32px);margin:8px 0 20px">よくある質問</h2>
+  <div class="faq">
+    <details><summary>どれくらいお金がかかりますか？</summary><div class="a">
+      <p>会話は軽量モデル、まとめは高性能モデルのおすすめ設定で、毎日使って月200円くらいが目安です（使い方によって変わります）。$5 チャージして、減り方を見てから足すのがおすすめです。</p>
+    </div></details>
+    <details><summary>Claude Pro を契約しています。APIキーも必要？</summary><div class="a">
+      <p>いいえ。Claude Pro / Max / Team をお持ちなら、APIキーの代わりに Claude Code を入れてログインすれば、追加料金なしで使えます。ただし、AI の学習への使われ方などの規約が APIキーとは違います。くわしくは <a href="privacy.html">プライバシーポリシー</a> をご覧ください。</p>
+    </div></details>
+    <details><summary>急にキャラが話さなくなりました</summary><div class="a">
+      <p>次の2つが考えられます。</p>
+      <p><b>クレジットの残高が 0：</b>Console の請求ページで買い足してください。</p>
+      <p><b>キーの有効期限が切れた：</b>期限切れのキーは元に戻せません。新しいキーを作って、TomoNexus に貼り直してください。キーの一覧の「有効期限」で確認できます。</p>
+    </div></details>
+    <details><summary>「キーを作成」が押せません</summary><div class="a">
+      <p>会社などの組織に入っているアカウントだと、権限によってはキーを作れないことがあります。個人のアカウントで作るか、組織の管理者に相談してください。</p>
+    </div></details>
+    <details><summary>キーを人に見られてしまいました</summary><div class="a">
+      <p>Console の API キーの一覧で、そのキーの「…」から削除（または無効化）してください。新しいキーを作って、TomoNexus に貼り直せば大丈夫です。</p>
+    </div></details>
+  </div>
+  <p style="margin-top:20px;color:var(--mute);font-size:13px">※ 画面・料金・しくみは Anthropic の都合で変わることがあります。最新の情報は <a href="https://platform.claude.com/docs/ja/get-api-key" target="_blank" rel="noopener">Claude APIキーを取得する</a>・<a href="https://support.claude.com/ja/articles/8977456" target="_blank" rel="noopener">API の支払いについて</a>（Anthropic）でご確認ください。このページは TomoNexus が作った説明で、Anthropic とは関係ありません。</p>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-links"><a href="./">トップ</a><a href="shikumi.html">しくみ</a><a href="obsidian.html">Obsidian連携</a><a href="claude.html">APIキーの取り方</a><a href="https://jinaxion.booth.pm/items/9001516" target="_blank" rel="noopener">BOOTH</a><a href="history.html">更新履歴</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a></div>
+    <p>© <span data-year>2026</span> TomoNexus</p>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

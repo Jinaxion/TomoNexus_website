@@ -164,6 +164,7 @@
       <li><b>Talk 専属</b>：そのキャラと話したことだけで完結。Vault のほかのメモは読みません</li>
     </ul>
     <p>細かい設定で「Vault のメモを読む」「Vault にメモを保存する」を別々にオン／オフでき、Obsidian 以外のフォルダを追加することもできます（追加したフォルダは読み取りのみが既定）。</p>
+    <p>読めるのは、メモ（<code>.md</code>）に加えて、<b>テキスト・Word・Excel・PowerPoint</b>（<code>.txt</code>・<code>.docx</code>・<code>.xlsx</code>・<code>.xlsm</code>・<code>.pptx</code>）の文字です。仕事の資料や企画書のフォルダを追加すれば、「この資料どう思う？」とキャラに相談できます。</p>
     <p class="g-note"><code>.obsidian</code> の設定フォルダや、鍵・パスワードが入りがちなファイル（<code>.env</code>・<code>*.key</code>・<code>*.pem</code> など）は、最初から読みません。範囲を狭めても、これまでの会話の記録は消えません。</p>
   </div>
   <figure class="g-shot narrow">
@@ -196,7 +197,7 @@
       <p>使えます。保存は一時ファイルを書いてから置き換える方式で、同期と保存がぶつかったときは、元のノートを上書きせずに別名（<code>-conflict</code> 付き）で保存します。</p>
     </div></details>
     <details><summary>AI に Vault の中身が全部送られる？</summary><div class="a">
-      <p>いいえ。会話のときに Claude へ送るのは、いまの話に関係しそうなノートの一部だけです。どのノートを読めるかは「記憶とアクセス」の範囲に従い、Talk 専属のキャラには Vault のメモは渡りません。</p>
+      <p>いいえ。会話のときに Claude へ送るのは、いまの話に関係しそうなノートやファイル（Word・Excel など）の文字の一部だけです。どのノートを読めるかは「記憶とアクセス」の範囲に従い、Talk 専属のキャラには Vault のメモは渡りません。</p>
       <p>データがどこを通るかは <a href="shikumi.html">しくみ</a> のページをご覧ください。</p>
     </div></details>
     <details><summary>Obsidian を使わないと損？</summary><div class="a">
@@ -208,7 +209,7 @@
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <div class="foot-links"><a href="./">トップ</a><a href="shikumi.html">しくみ</a><a href="obsidian.html">Obsidian連携</a><a href="azure.html">Azureキーの取り方</a><a href="https://jinaxion.booth.pm/items/9001516" target="_blank" rel="noopener">BOOTH</a><a href="history.html">更新履歴</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a></div>
+    <div class="foot-links"><a href="./">トップ</a><a href="shikumi.html">しくみ</a><a href="obsidian.html">Obsidian連携</a><a href="claude.html">APIキーの取り方</a><a href="https://jinaxion.booth.pm/items/9001516" target="_blank" rel="noopener">BOOTH</a><a href="history.html">更新履歴</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a></div>
     <p>© <span data-year>2026</span> TomoNexus</p>
   </div>
 </footer>

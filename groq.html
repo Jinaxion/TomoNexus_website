@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Groq の APIキーの取り方 — TomoNexus</title>
+<meta name="description" content="TomoNexus の聞き取りの予備に使う Groq の APIキーを、無料プランで作る手順。画面つきで説明します。">
+<meta name="theme-color" content="#060918">
+<link rel="icon" type="image/png" href="assets/img/icon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Sora:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/img/icon.png" alt=""><span><span class="t">Tomo</span><span class="n">Nexus</span></span></a>
+    <nav class="nav" aria-label="メインメニュー">
+      <a href="./#features">できること</a>
+      <a href="./#movie">動画</a>
+      <a href="./#requirements">必要なもの・料金</a>
+      <a href="shikumi.html">しくみ</a>
+      <a href="obsidian.html">Obsidian連携</a>
+      <a href="history.html">更新履歴</a>
+      <a href="./#faq">よくある質問</a>
+    </nav>
+    <a class="btn btn-primary" data-booth href="./#download"><span data-booth-label>体験版を試す</span></a>
+    <button class="menu-btn" aria-label="メニュー" aria-expanded="false">☰</button>
+  </div>
+</header>
+<main class="guide">
+
+<section class="g-hero">
+  <div>
+    <nav class="key-tabs" aria-label="キーの取り方"><span>キーの取り方：</span><a href="claude.html">Claude（AI）</a><a href="azure.html">Azure Speech（音声）</a><a href="groq.html" aria-current="page">Groq（任意）</a></nav>
+    <p class="eyebrow">Groq API guide</p>
+    <h1><span class="nb">聞き取りの「予備」を、</span><span class="nb">無料で用意する。</span></h1>
+    <p class="lead">Groq は、話した声を文字にする<b>聞き取りの予備</b>です。入れておくと、Azure の無料枠（月5時間）を超えた月や、聞き書きモードで長く話すときに、代わりに聞き取ってくれます。<b>なくても TomoNexus は動きます。</b></p>
+    <div class="g-pills"><span>目安 3分</span><span>無料プランでOK</span><span>カードの登録なし</span></div>
+  </div>
+  <figure>
+    <a href="assets/img/groq/02-create.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/groq/02-create.webp" alt="Groq の Create API Key 画面" width="657" height="398"></a>
+    <figcaption>Groq の「Create API Key」：名前を入れて Submit するだけ</figcaption>
+  </figure>
+</section>
+
+<section class="az-alert" aria-labelledby="gq-first" style="border-color:rgba(95,230,255,.5);background:radial-gradient(120% 140% at 0% 0%,rgba(95,230,255,.12),transparent 60%),rgba(255,255,255,.03)">
+  <p class="eyebrow" style="color:var(--cyan)">Good to know</p>
+  <h2 id="gq-first"><span class="ic" style="background:var(--cyan)">i</span>3つのキーの中で、いちばんカンタンです</h2>
+  <div class="az-grid">
+    <div class="az-card">
+      <b>💳 カードの登録はいりません</b>
+      <p>無料プランなら、Google や GitHub のアカウントでログインして、キーを作るだけ。<span class="hl">お金がかかることはありません。</span></p>
+    </div>
+    <div class="az-card">
+      <b>⏱ 無料でも、たっぷり聞き取れます</b>
+      <p>無料プランの聞き取りは、<b>1時間あたり2時間分・1日8時間分</b>の音声まで（2026年11月時点）。ふだんの会話や聞き書きには十分です。</p>
+    </div>
+  </div>
+  <div class="tip">
+    <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+    <p class="bubble">聞き書きモードで長く話す人は、<b>Groq を入れておくと Azure の無料枠を節約</b>できるよ。3分で終わるから、ついでに作っちゃお！</p>
+  </div>
+</section>
+
+<nav class="g-toc" aria-label="このページの内容">
+  <a href="#s1">1. ログイン</a><a href="#s2">2. API Keys を開く</a><a href="#s3">3. キーを作る</a><a href="#s4">4. キーをコピー</a><a href="#s5">5. TomoNexus に貼る</a><a href="#gqfaq">よくある質問</a>
+</nav>
+
+<section class="g-step" id="s1">
+  <div class="g-text">
+    <span class="g-num"><b>1</b>STEP</span>
+    <h2>GroqCloud にログイン（アカウントを作る）</h2>
+    <p><a href="https://console.groq.com/" target="_blank" rel="noopener">GroqCloud（console.groq.com）</a>を開きます。「Create Account or Login」の画面で、どれかを選びます。</p>
+    <ul>
+      <li><span class="mk">1</span><b>Continue with Google</b>（GitHub でもOK）：いちばん手軽です</li>
+      <li><span class="mk">2</span><b>メールアドレス</b>を入れて「Continue with email」：届いたメールのリンクからログインします</li>
+    </ul>
+    <p>はじめての方は、そのままアカウントが作られます。</p>
+  </div>
+  <figure class="g-shot narrow" style="max-width:440px">
+    <a href="assets/img/groq/00-login.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/groq/00-login.webp" alt="GroqCloud のログイン画面。Continue with Google、メールアドレスの欄" loading="lazy" width="470" height="400"></a>
+    <figcaption>GroqCloud のログイン</figcaption>
+  </figure>
+</section>
+
+<section class="g-step flip stack" id="s2">
+  <div class="g-text">
+    <span class="g-num"><b>2</b>STEP</span>
+    <h2>「API Keys」を開いて、キーを作り始める</h2>
+    <p>上のメニューの <b>API Keys</b> を開いて、右の <span class="mk">1</span><b>＋ Create API Key</b> を押します。</p>
+    <div class="tip">
+      <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+      <p class="bubble">画面は英語だけど、押すのは<b>2〜3か所だけ</b>だから大丈夫！</p>
+    </div>
+  </div>
+  <figure class="g-shot">
+    <a href="assets/img/groq/01-keys.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/groq/01-keys.webp" alt="Groq の API Keys 画面。Create API Key ボタン" loading="lazy" width="1088" height="220"></a>
+    <figcaption>API Keys の画面</figcaption>
+  </figure>
+</section>
+
+<section class="g-step" id="s3">
+  <div class="g-text">
+    <span class="g-num"><b>3</b>STEP</span>
+    <h2>名前と有効期限を決めて作成</h2>
+    <ul>
+      <li><span class="mk">1</span><b>Display Name</b>（名前）：自分でわかる名前に（例：<code>TomoNexus</code>）</li>
+      <li><span class="mk">2</span><b>Expiration</b>（有効期限）：<span class="hl">「No expiration」（無期限）がおすすめ</span>。期限をつけると、その日から聞き取りの予備が使えなくなります</li>
+      <li><span class="mk">3</span>「<b>Submit</b>」を押す</li>
+    </ul>
+  </div>
+  <figure class="g-shot narrow" style="max-width:460px">
+    <a href="assets/img/groq/02-create.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/groq/02-create.webp" alt="Create API Key 画面。Display Name、Expiration で No expiration、Submit ボタン" loading="lazy" width="657" height="398"></a>
+    <figcaption>「Create API Key」</figcaption>
+  </figure>
+</section>
+
+<section class="g-step flip" id="s4">
+  <div class="g-text">
+    <span class="g-num"><b>4</b>STEP</span>
+    <h2>キーをコピーする（表示は1回だけ）</h2>
+    <p>作ったキー（<code>gsk_</code> で始まる長い文字）が表示されます。<span class="mk">1</span><b>Copy</b> を押してコピーし、「Done」で閉じます。</p>
+    <div class="tip warn">
+      <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+      <p class="bubble">「<b>Copy it now, as we will not display it again.</b>」＝<b>今コピーしてね、もう表示しないよ</b>って意味！閉じちゃったら、キーを作り直せばOKだよ。</p>
+    </div>
+    <p>一覧に戻ると、作ったキーが並びます（キーの文字は最初と最後しか表示されません）。</p>
+  </div>
+  <div>
+    <figure class="g-shot">
+      <a href="assets/img/groq/03-copy.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/groq/03-copy.webp" alt="API キーが作成された画面。Copy ボタン（キーの文字は隠しています）" loading="lazy" width="661" height="245"></a>
+      <figcaption>作成直後（キーの文字は隠しています）</figcaption>
+    </figure>
+    <figure class="g-shot" style="margin-top:16px">
+      <a href="assets/img/groq/04-done.webp" target="_blank" rel="noopener" title="大きく表示"><img src="assets/img/groq/04-done.webp" alt="API Keys の一覧に TomoNexus のキーが追加されたところ。Expires は Never" loading="lazy" width="1086" height="305"></a>
+      <figcaption>一覧に追加されたら完成（Expires が Never ＝ 無期限）</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="g-step" id="s5">
+  <div class="g-text">
+    <span class="g-num"><b>5</b>STEP</span>
+    <h2>TomoNexus に貼って完了</h2>
+    <p>TomoNexus のセットアップ画面（または設定画面）の <b>Groq</b> の欄に、コピーしたキーを貼り付ければ完了です。あとは TomoNexus が、必要なときに自動で Groq を使います。</p>
+    <ul>
+      <li>Azure の聞き取りが月5時間を超えた月は、Groq で聞き取ります</li>
+      <li>聞き書きモード（製品版）では、Groq のキーがあれば Groq で聞き取ります</li>
+    </ul>
+    <div class="tip warn">
+      <img src="assets/img/tomo.webp" alt="Tomo" width="52" height="52">
+      <p class="bubble">無料のキーでも、人に見せるのは NG。見られちゃったら、一覧の<b>ゴミ箱マーク</b>で消して、作り直してね。</p>
+    </div>
+  </div>
+  <div class="mock" role="img" aria-label="TomoNexus にキーを貼るイメージ図" style="align-self:center">
+    <span class="mtag">イメージ</span>
+    <div class="mt">聞き取りの予備（任意）</div>
+    <div class="f hit"><label>Groq の APIキー</label><div class="in">gsk_••••••••••••••••</div></div>
+    <p class="note">※ 空のままでも TomoNexus は動きます</p>
+  </div>
+</section>
+
+<section id="gqfaq" style="margin-top:56px">
+  <p class="eyebrow">FAQ</p>
+  <h2 class="h2" style="font-size:clamp(24px,3.4vw,32px);margin:8px 0 20px">よくある質問</h2>
+  <div class="faq">
+    <details><summary>Groq は入れないとダメ？</summary><div class="a">
+      <p>いいえ、任意です。なくても Azure で聞き取れます。Azure の無料枠（月5時間）を超えそうなときや、聞き書きモードで長く話すときに入れておくと安心です。</p>
+    </div></details>
+    <details><summary>本当に無料？あとから請求されない？</summary><div class="a">
+      <p>無料プランのままなら請求されません。カードを登録していないので、請求のしようがありません。無料の上限を超えた分は、しばらく待つと（1時間ごと・1日ごとに）また使えるようになります。</p>
+    </div></details>
+    <details><summary>話した声は Groq に保存される？</summary><div class="a">
+      <p>聞き取りのために音声を送ります。データの扱いは <a href="privacy.html">プライバシーポリシー</a> と、Groq の <a href="https://console.groq.com/docs/your-data" target="_blank" rel="noopener">Your Data in GroqCloud</a> をご覧ください。</p>
+    </div></details>
+    <details><summary>キーを人に見られてしまいました</summary><div class="a">
+      <p>API Keys の一覧で、そのキーのゴミ箱マークを押して削除してください。新しいキーを作って、TomoNexus に貼り直せば大丈夫です。</p>
+    </div></details>
+  </div>
+  <p style="margin-top:20px;color:var(--mute);font-size:13px">※ 画面・料金・無料の上限は Groq の都合で変わることがあります。最新の情報は <a href="https://console.groq.com/docs/rate-limits" target="_blank" rel="noopener">Groq の Rate Limits</a> でご確認ください。このページは TomoNexus が作った説明で、Groq とは関係ありません。</p>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-links"><a href="./">トップ</a><a href="shikumi.html">しくみ</a><a href="obsidian.html">Obsidian連携</a><a href="claude.html">APIキーの取り方</a><a href="https://jinaxion.booth.pm/items/9001516" target="_blank" rel="noopener">BOOTH</a><a href="history.html">更新履歴</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a></div>
+    <p>© <span data-year>2026</span> TomoNexus</p>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
